@@ -21,6 +21,10 @@
     <div class="container">
       <main role="main" class="container">
         <div class="row">
+          <div class="col-md-2 category-main">
+            @include('categories')
+          </div>
+
           <div class="col-md-8 blog-main">
 
             @foreach ($posts as $post)
