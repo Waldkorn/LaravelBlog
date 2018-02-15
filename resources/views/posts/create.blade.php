@@ -15,17 +15,19 @@
 	    <input type="text" class="form-control" id="title" name="title">
 	  </div>
 	  <div class="form-group">
-	  	<!--
+	  
 	  	<label for="category">Category</label>
 	  	<select type="integer" class="form-control" id="category_id" name="category_id">
 	  		@foreach ($categories as $category)
 	  			<option value={{ $category->id }}>{{ $category->category_title }}</option>
 	  		@endforeach
 	  	</select>
-	  -->
+	 
+	 <!--
 	  <label for="category_id">Category</label>
 	  <input type="integer" class="form-control" id="category_id" name="category_id">
 	  </div>
+	-->
 	  <div class="form-group">
 	    <label for="Body">Body</label>
 	   <textarea id="body" name="body" class="form-control" ></textarea>

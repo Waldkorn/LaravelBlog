@@ -8,6 +8,11 @@
 	</a>
 
   </h2>
+  <h3>
+
+  		{{ $categories[$post->category_id - 1]->category_title }}
+
+  </h3>
   <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }}</p>
 
   {{ $post->body }}
