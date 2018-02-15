@@ -2,6 +2,8 @@
 
 @section ('content')
 
+  @include ('layouts.nav')
+
 	<h1>{{ $post->title }}</h1>
 
 	{{ $post->body }}
