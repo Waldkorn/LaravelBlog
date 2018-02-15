@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
 
-    	$categories = category::Latest()->get();
+    	$categories = category::get();
     	$posts = Post::Latest()->where('category_id', '=', $category->id)->get();
 
     	return view('index', compact('posts', 'categories'));
