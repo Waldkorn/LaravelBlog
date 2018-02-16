@@ -18,6 +18,8 @@
   </head>
 
   <body>
+    @include ('layouts.nav')
+    
     <div class="container">
       <main role="main" class="container">
         <div class="row">

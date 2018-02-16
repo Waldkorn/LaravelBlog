@@ -2,6 +2,8 @@
 
 @section ('content')
 
+	@include ('layouts.nav')
+	
 	<h1>Publish a Post</h1>
 
 	<hr>
