@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+
 
 class CommentsController extends Controller
 {
@@ -14,4 +16,16 @@ class CommentsController extends Controller
 
     	return back();
     }
+
+    	public function delete(Comment $comment)
+	{ 
+
+        $comments = comment::get();
+        
+        $correctComment = Comment::Latest()->where('id', '=', $comment->id)->get();
+        
+        Comment::find($correctComment[0]->id)->delete();
+      
+		return back();
+	}
 }

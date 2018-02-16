@@ -18,6 +18,13 @@
 	  				{{ $comment->created_at->diffForHumans() }}
 	  			</strong>
 	  			{{ $comment->body }}
+
+              <form action='/comments/{{ $comment->id }}/delete' method="POST">
+                {{ method_field('POST') }}
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <input type="submit" class="btn btn-danger" value="delete">
+                
+             </form>
 	  		</li>
 
 	  	@endforeach
