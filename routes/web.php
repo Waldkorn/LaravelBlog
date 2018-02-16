@@ -19,3 +19,9 @@ Route::post('/comments/{comment}/delete', 'CommentsController@delete');
 Route::post('/categories/create', 'CategoryController@create');
 
 Route::post('/comments/{post}/toggle', 'CommentsController@toggle');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -37,7 +37,7 @@
 
   <div class="card">
   	<div class="card-block">
-      @if ($post->comments_allowed == 1)
+      @if ($post->comments_allowed == 1 and Auth::check())
   		<form method="POST" action="/posts/{{ $post->id }}/comments">
   			{{ csrf_field() }}
   			<div class="form-group">

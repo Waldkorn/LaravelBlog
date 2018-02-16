@@ -9,6 +9,7 @@
 
   </a>
   </h2>
+  @if (Auth::check()) 
    <form action='/comments/{{ $post->id }}/toggle' method="POST">
             
     {{ csrf_field() }}
@@ -23,6 +24,7 @@
         <input type="submit" class="btn btn-danger" value="comments not allowed">
      </form>
      @endif
+   @endif
 </row>
   <h3>
 

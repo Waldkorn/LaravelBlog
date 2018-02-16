@@ -5,8 +5,14 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href='/'>Home <span class="sr-only">(current)</span></a>
+      @if (Auth::check())
       <a class="nav-item nav-link" href="/posts/create">Create Post</a>
-      <a class="nav-item nav-link disabled" href="#">Login</a>
+      @endif
+      @if (Auth::check()) 
+      <a class="nav-item nav-link" href="/logout">Logout</a>
+      @else
+      <a class="nav-item nav-link" href="/login">Login</a>
+      @endif
     </div>
   </div>
 </nav>

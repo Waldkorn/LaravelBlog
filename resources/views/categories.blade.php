@@ -14,6 +14,7 @@
 		
 	@endforeach
 
+	@if (Auth::check())
 	<form method="POST" action="/categories/create">
 		{{ csrf_field() }}
 		<div class="form-group">
@@ -21,6 +22,7 @@
 		</div>
 
 	</form>
+	@endif
 
 </ul>
 
