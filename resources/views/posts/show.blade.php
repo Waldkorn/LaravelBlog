@@ -2,6 +2,8 @@
 
 @section ('content')
 
+<div class="container col-md-11">
+
   @include ('layouts.nav')
 
 	<h1>{{ $post->title }}</h1>
@@ -48,5 +50,7 @@
   		@include('layouts.errors');
    	</div>
   </div>
+
+</div>
 
 @endsection
