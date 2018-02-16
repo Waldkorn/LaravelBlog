@@ -11,11 +11,12 @@ class CategoryController extends Controller
     public function index()
     {
 
-    	$categories = category::Latest()->get();
+    	$categories = category::get();
 
     	return view('categories', compact('categories'));
 
     }
+
     public function show(Category $category)
     {
 
@@ -25,4 +26,21 @@ class CategoryController extends Controller
     	return view('index', compact('posts', 'categories'));
     	
     }
+    public function create()
+    {
+    	$this->validate(request(), [
+
+			'category_title' => 'required'
+
+		]);
+
+		Category::create([
+
+			'category_title' => request('category_title'),
+
+		]);
+
+		return back();
+    }
+
 }
