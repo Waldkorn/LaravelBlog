@@ -15,3 +15,5 @@ Route::get('/categories/', 'CategoryController@index');
 Route::get('/categories/{category}/posts', 'CategoryController@show');
 
 Route::post('/comments/{comment}/delete', 'CommentsController@delete');
+
+Route::post('/categories/create', 'CategoryController@create');

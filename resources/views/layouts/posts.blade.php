@@ -11,7 +11,9 @@
   </h2>
   <h3>
 
-  		{{ $categories[$post->category_id - 1]->category_title }}
+      @if ($post->category != null)
+        {{ $post->category->category_title }}
+      @endif
 
   </h3>
   <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }}</p>

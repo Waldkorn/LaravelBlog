@@ -23,7 +23,7 @@
     <div class="container">
       <main role="main" class="container">
         <div class="row">
-          <div class="col-md-2 category-main">
+          <div class="col-md-3 category-main">
             @include('categories')
           </div>
 
