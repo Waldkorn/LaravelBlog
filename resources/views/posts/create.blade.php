@@ -3,10 +3,16 @@
 @section ('content')
 
 	@include ('layouts.nav')
+
+	<div class="container col-md-11">
 	
 	<h1>Publish a Post</h1>
 
+</div>
+
 	<hr>
+
+	<div class="container col-md-11">
 
 	<form method="POST" action="/posts">
 
@@ -38,6 +44,8 @@
 
 	  @include ('layouts.errors')
 	</form>
+
+</div>
 
 
 @endsection
