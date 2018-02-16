@@ -15,7 +15,7 @@ class UpdatePostsTable extends Migration
     {
         //
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('category_id');
+            $table->increments('category_id');
         });
     }
 
