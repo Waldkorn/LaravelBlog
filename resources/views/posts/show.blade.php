@@ -34,9 +34,10 @@
   </div>
   <hr>
 
-@if ($post->comments_allowed == 1)
+
   <div class="card">
   	<div class="card-block">
+      @if ($post->comments_allowed == 1)
   		<form method="POST" action="/posts/{{ $post->id }}/comments">
   			{{ csrf_field() }}
   			<div class="form-group">
@@ -45,13 +46,20 @@
   			<div class="form-group">
   				<button type="submit" class="btn btn-primary">Add comment</button>
   			</div>
+        @include('layouts.errors')
   		</form>
-
-  		@include('layouts.errors');
+      @else
+      <div class="form-group">
+        <div class="form-control">
+          Comments not allowed for this post...
+        </div>
+      </div>
+      @endif
+  		
    	</div>
   </div>
   
-@endif
+
 
 </div>
 
