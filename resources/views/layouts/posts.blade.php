@@ -9,14 +9,14 @@
 
   </a>
   </h2>
-   <form action='comments/{{ $post->id }}/toggle' method="POST">
+   <form action='/comments/{{ $post->id }}/toggle' method="POST">
             
     {{ csrf_field() }}
     @if ($post->comments_allowed == 1)
     <input type="submit" class="btn btn-success" value="comments allowed">
     </form>
     @else
-     <form action='comments/{{ $post->id }}/toggle' method="POST">
+     <form action='/comments/{{ $post->id }}/toggle' method="POST">
                 
       {{ csrf_field() }}
 
