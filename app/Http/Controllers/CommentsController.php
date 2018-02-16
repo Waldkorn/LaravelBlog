@@ -11,10 +11,14 @@ class CommentsController extends Controller
 {
     public function store(Post $post)
     {
-    	$this->validate(request(), [ 'body' => 'required|min:2']);
-    	$post->addComment(request('body'));
+        if ($post->comments_allowed == 1) 
+        {
 
-    	return back();
+        	$this->validate(request(), [ 'body' => 'required|min:2']);
+        	$post->addComment(request('body'));
+        	return back();
+        }
+
     }
 
     	public function delete(Comment $comment)
@@ -28,4 +32,24 @@ class CommentsController extends Controller
       
 		return back();
 	}
+
+    public function toggle(Post $post)
+    {
+        if ($post->comments_allowed == 1) {
+
+            $post->comments_allowed = 0;
+
+            $post->save();
+
+            return back();
+
+        } else {
+
+            $post->comments_allowed = 1;
+
+            $post->save();
+
+            return back();
+        }
+    }
 }

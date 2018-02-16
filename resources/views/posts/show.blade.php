@@ -32,7 +32,7 @@
   </div>
   <hr>
 
-
+@if ($post->comments_allowed == 1)
   <div class="card">
   	<div class="card-block">
   		<form method="POST" action="/posts/{{ $post->id }}/comments">
@@ -48,5 +48,7 @@
   		@include('layouts.errors');
    	</div>
   </div>
+  
+@endif
 
 @endsection
