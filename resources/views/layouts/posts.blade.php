@@ -11,7 +11,6 @@
   </h2>
   <h3>
 
-      <!-- {{ $categories[$post->category_id - 1]->category_title }} -->
       @if ($post->category != null)
         {{ $post->category->category_title }}
       @endif
