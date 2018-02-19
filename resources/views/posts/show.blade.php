@@ -8,6 +8,8 @@
 
 	<h1>{{ $post->title }}</h1>
 
+  @include ('comments.allowed')
+
 	{{ $post->body }}
 
 	  <hr>
