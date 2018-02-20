@@ -8,9 +8,9 @@ Route::post('/posts', 'PostsController@store');
 
 Route::get('/posts/{post}', 'PostsController@show');
 
-Route::post('/posts/{post}/comments', 'CommentsController@store');
-
 Route::get('/posts/{post}/edit', 'PostsController@edit');
+
+Route::post('/posts/{post}/update', 'PostsController@update');
 
 
 Route::get('/categories/', 'CategoryController@index');
@@ -24,6 +24,8 @@ Route::post('/categories/create', 'CategoryController@create');
 Route::post('/comments/{comment}/delete', 'CommentsController@delete');
 
 Route::post('/comments/{post}/toggle', 'CommentsController@toggle');
+
+Route::post('/posts/{post}/comments', 'CommentsController@store');
 
 
 Auth::routes();
