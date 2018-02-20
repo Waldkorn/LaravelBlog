@@ -10,7 +10,7 @@
 
 	<h1>{{ $post->title }}</h1>
 
-  @if (Auth::check())
+  @if ($post->user->id == Auth::id())
 
     <a href="/posts/{{ $post->id }}/edit" class="ml-auto"><input type="button" class="btn btn-warning" value="Edit post"></a>
 
@@ -26,7 +26,7 @@
 
   </h3>
 
-	{{ $post->body }}
+	{!! $post->body !!}
 
 	  <hr>
 
@@ -42,19 +42,31 @@
 	  <ul class="list-group">
 	  	@foreach ($post->comments as $comment)
 	  		<li class="list-group-item">
-          @if (Auth::check())
-            <form action='/comments/{{ $comment->id }}/delete' method="POST" class="d-inline">
-              {{ method_field('POST') }}
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="submit" class="btn btn-danger" value="delete">    
-            </form>
-          @endif
-              <strong>
-                {{ $comment->created_at->diffForHumans() }}
-              </strong>
-              {{ $post->user->name }}:
+          <div class="row">
+            <div>
+            <strong>
+              {{ $comment->created_at->diffForHumans() }}
+            </strong>
 
-             {{ $comment->body }}
+            {{ $comment->user->name }}:
+
+            {{ $comment->body }}
+
+            </div>
+              <div class="ml-auto">
+
+          
+          @if ($comment->user->id == Auth::id() || $post->user->id == Auth::id())
+              <form action='/comments/{{ $comment->id }}/delete' method="POST" class="d-block">
+                {{ method_field('POST') }}
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="submit" class="btn btn-danger" value="delete">    
+              </form>
+          @endif
+        </div>
+        </div>
+
+
 	  		</li>
 
 	  	@endforeach
@@ -72,6 +84,7 @@
     			{{ csrf_field() }}
     			<div class="form-group">
     				<textarea name="body" placeholder="Your comment here" class="form-control" required></textarea>
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
     			</div>
     			<div class="form-group">
     				<button type="submit" class="btn btn-primary">Add comment</button>

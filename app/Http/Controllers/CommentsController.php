@@ -17,10 +17,21 @@ class CommentsController extends Controller
     public function store(Post $post)
     {
         if ($post->comments_allowed == 1) 
-        {
+        {   
 
-        	$this->validate(request(), [ 'body' => 'required|min:2']);
-        	$post->addComment(request('body'));
+        	$this->validate(request(), [ 
+                'body' => 'required|min:2',
+                'user_id' => 'required'
+            ]);
+
+            $comment = new Comment;
+
+            $comment->post_id = $post->id;
+            $comment->user_id = request()->user_id;
+        	$comment->body = request()->body;
+
+            $comment->save();
+
         	return back();
         }
 
