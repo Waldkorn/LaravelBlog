@@ -48,25 +48,35 @@
 
   <div class="card">
   	<div class="card-block">
-      @if ($post->comments_allowed == 1)
-  		<form method="POST" action="/posts/{{ $post->id }}/comments">
-  			{{ csrf_field() }}
-  			<div class="form-group">
-  				<textarea name="body" placeholder="Your comment here" class="form-control" required></textarea>
-  			</div>
-  			<div class="form-group">
-  				<button type="submit" class="btn btn-primary">Add comment</button>
-  			</div>
-        @include('layouts.errors')
-  		</form>
-      @else
-      <div class="form-group">
-        <div class="form-control">
-          Comments not allowed for this post...
+
+      @if (Auth::check())
+        @if ($post->comments_allowed == 1)
+    		<form method="POST" action="/posts/{{ $post->id }}/comments">
+    			{{ csrf_field() }}
+    			<div class="form-group">
+    				<textarea name="body" placeholder="Your comment here" class="form-control" required></textarea>
+    			</div>
+    			<div class="form-group">
+    				<button type="submit" class="btn btn-primary">Add comment</button>
+    			</div>
+          @include('layouts.errors')
+    		</form>
+        @else
+        <div class="form-group">
+          <div class="form-control">
+            Comments not allowed for this post...
+          </div>
         </div>
-      </div>
-      @endif
-  		
+        @endif
+
+        @else 
+        <div class= "form-group">
+          <div class="form-control">
+            Please sign in to comment...
+          </div>
+        </div>
+
+  		@endif
    	</div>
   </div>
   
