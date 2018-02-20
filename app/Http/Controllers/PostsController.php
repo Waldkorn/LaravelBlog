@@ -47,12 +47,15 @@ class PostsController extends Controller
 			'category_id' => request('category_id')
 
 		]);
-
-		// save it to the database
-		//$post->save();
-		
-		// and then redirect to the homepage		
+	
 		return redirect('/');
+
+	}
+
+	public function edit(Post $post) 
+	{
+
+		return view('/posts.edit', compact('post'));
 
 	}
 }

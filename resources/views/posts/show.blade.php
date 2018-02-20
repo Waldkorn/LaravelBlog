@@ -8,11 +8,19 @@
 
 	<h1>{{ $post->title }}</h1>
 
-  @include ('comments.allowed')
-
 	{{ $post->body }}
 
 	  <hr>
+
+      <div class="row">
+
+        <a href="/posts/{{ $post->id }}/edit"><input type="button" class="btn btn-warning" value="Edit post"></a>
+
+        @include ('comments.allowed')
+
+      </div>
+
+    <hr>
 
   <div class="comments">
 	  <ul class="list-group">
