@@ -17,7 +17,11 @@
       @endif
 
   </h3>
-  <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }}</p>
+  <p class="blog-post-meta">
+    {{ $post->user->name }} on
+    {{ $post->created_at->toFormattedDateString() }}
+    }
+  </p>
 
   {{ $post->body }}
 

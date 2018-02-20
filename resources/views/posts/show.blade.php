@@ -33,6 +33,7 @@
               <input type="submit" class="btn btn-danger" value="delete">    
             </form>
           @endif
+              {{ $post->user->name }}
               <strong>
                 {{ $comment->created_at->diffForHumans() }}
               </strong>
