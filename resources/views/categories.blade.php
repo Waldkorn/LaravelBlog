@@ -18,7 +18,7 @@
 	<form method="POST" action="/categories/create">
 		{{ csrf_field() }}
 		<div class="form-group">
-			<input name="category_title" class="form-control" placeholder="add category...">
+			<input name="category_title" class="form-control" placeholder="Add category...">
 		</div>
 
 	</form>

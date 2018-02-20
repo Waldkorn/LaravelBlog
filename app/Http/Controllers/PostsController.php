@@ -78,4 +78,15 @@ class PostsController extends Controller
 
 		return redirect('/posts/' . $id);
 	}
+
+	public function search(Request $request) {
+
+		$search = $request->search;
+
+		$posts = Post::where('body','LIKE','%' . $search . '%')->Latest()->get();
+		$categories = Category::get();
+
+		return view('index', compact('posts', 'categories'));
+
+	}
 }

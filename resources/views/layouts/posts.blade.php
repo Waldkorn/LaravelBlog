@@ -6,7 +6,6 @@
 
 	  	{{ $post->title }}
 
-
   </a>
   </h2>
 </row>

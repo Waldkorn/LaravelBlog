@@ -24,7 +24,16 @@
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-3 category-main">
+
+            <form method="POST" action="/posts/search">
+              {{ csrf_field() }}
+              <div class="form-group">
+                <input class="form-control" name="search" placeholder="Search articles...">
+              </div>
+            </form>
+
             @include('categories')
+
           </div>
 
           <div class="col-md-8 blog-main">
