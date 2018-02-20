@@ -5,13 +5,28 @@
 @include ('layouts.nav')
 
 <div class="container col-md-11">
-	<div class="form-group">
+	
 
-		<form Method="POST">
+		<form Method="POST" action="update">
 
-			<h1>{{ $post->title }} adsfasdfasdfasdfasdfasdfasdf</h1>
+			{{ csrf_field() }}
 
-			<textarea name="body">{{ $post->body }}</textarea>
+			<div class="form-group">
+
+				<label for="title">Title:</label>
+				<input name="title" class="form-control" value="{{ $post->title }}">
+
+			</div>
+
+			<hr>
+
+			<div class="form-group">
+
+				<textarea name="body" class="form-control">{{ $post->body }}</textarea>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit changes</button>
 
 		</form>
 

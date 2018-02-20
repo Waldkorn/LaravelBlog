@@ -14,7 +14,11 @@
 
       <div class="row">
 
+        @if (Auth::check())
+
         <a href="/posts/{{ $post->id }}/edit"><input type="button" class="btn btn-warning" value="Edit post"></a>
+
+        @endif
 
         @include ('comments.allowed')
 

@@ -58,4 +58,22 @@ class PostsController extends Controller
 		return view('/posts.edit', compact('post'));
 
 	}
+
+	public function update($id) {
+
+		$this->validate(request(), [
+
+			'title' => 'required',
+			'body' => 'required'
+		]);
+
+		$post = Post::find($id);
+
+		$post->title = request()->title;
+		$post->body = request()->body;
+
+		$post->save();
+
+		return redirect('/posts/' . $id);
+	}
 }
