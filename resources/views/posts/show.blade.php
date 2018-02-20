@@ -6,7 +6,25 @@
 
 <div class="container col-md-11">
 
+  <div class="row">
+
 	<h1>{{ $post->title }}</h1>
+
+  @if (Auth::check())
+
+    <a href="/posts/{{ $post->id }}/edit" class="ml-auto"><input type="button" class="btn btn-warning" value="Edit post"></a>
+
+  @endif
+
+  </div>
+
+  <h3>
+
+    @if ($post->category != null)
+      {{ $post->category->category_title }}
+    @endif
+
+  </h3>
 
 	{{ $post->body }}
 
@@ -14,13 +32,7 @@
 
       <div class="row">
 
-        @if (Auth::check())
 
-        <a href="/posts/{{ $post->id }}/edit"><input type="button" class="btn btn-warning" value="Edit post"></a>
-
-        @endif
-
-        @include ('comments.allowed')
 
       </div>
 

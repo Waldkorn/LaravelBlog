@@ -55,7 +55,8 @@ class PostsController extends Controller
 	public function edit(Post $post) 
 	{
 
-		return view('/posts.edit', compact('post'));
+		$categories = Category::get();
+		return view('/posts.edit', compact('post', 'categories'));
 
 	}
 

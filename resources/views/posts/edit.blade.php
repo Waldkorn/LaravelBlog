@@ -4,8 +4,7 @@
 
 @include ('layouts.nav')
 
-<div class="container col-md-11">
-	
+<div class="container col-md-11">	
 
 		<form Method="POST" action="update">
 
@@ -18,6 +17,16 @@
 
 			</div>
 
+			<div class="form-group">
+	  
+			  	<label for="category">Category</label>
+			  	<select type="integer" class="form-control" id="category_id" name="category_id">
+			  		@foreach ($categories as $category)
+			  			<option value={{ $category->id }}>{{ $category->category_title }}</option>
+			  		@endforeach
+			  	</select>
+
+			</div>
 			<hr>
 
 			<div class="form-group">
@@ -27,6 +36,9 @@
 			</div>
 
 			<button type="submit" class="btn btn-primary">Submit changes</button>
+		</form>
+		
+			@include ('comments.allowed')
 
 		</form>
 
