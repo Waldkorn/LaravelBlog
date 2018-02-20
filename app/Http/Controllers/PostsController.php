@@ -44,7 +44,8 @@ class PostsController extends Controller
 
 			'title' => request('title'),
 			'body' => request('body'),
-			'category_id' => request('category_id')
+			'category_id' => request('category_id'),
+			'user_id' => auth()->id()
 
 		]);
 	
