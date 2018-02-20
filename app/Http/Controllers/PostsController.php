@@ -25,10 +25,6 @@ class PostsController extends Controller
     	}
 
     	$posts = $posts->get();
-
-
-
-
     	$categories = Category::get();
     	$archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
 
@@ -109,8 +105,14 @@ class PostsController extends Controller
 
 		$posts = Post::where('body','LIKE','%' . $search . '%')->Latest()->get();
 		$categories = Category::get();
+		$archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
 
-		return view('index', compact('posts', 'categories'));
+    		->groupBy('year', 'month')
+    		->orderByRaw('min(created_at) desc')
+    		->get()
+    		->toArray();
+
+		return view('index', compact('posts', 'categories', 'archives'));
 
 	}
 }
