@@ -34,10 +34,16 @@
 
             @include('categories')
             <div>
-              <h4 class="font-italic">Archives</h4>
-                <ol class="list-unstyled mb-0">
-
-                </ol>
+              <h4 class="font-italic">Archives</h4>   
+              @foreach($archives as $year => $months)
+                      <div id="heading_{{ $loop->index }}">
+                          <h6 class="mb-0">
+                              <a href="/{{$year}}/posts">
+                              {{ $year }}
+                          </h6>
+                      </div>
+                  
+              @endforeach
             </div>
           </div>
 
