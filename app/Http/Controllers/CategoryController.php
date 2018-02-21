@@ -22,8 +22,20 @@ class CategoryController extends Controller
 
     	$categories = category::get();
     	$posts = Post::Latest()->where('category_id', '=', $category->id)->get();
-
-    	return view('index', compact('posts', 'categories'));
+        $archives = Post::orderBy('created_at', 'desc')
+            ->whereNotNull('created_at')
+            ->get()
+            ->groupBy(function(Post $post) {
+                return $post->created_at->format('F');
+            })
+            ->map(function ($item) {
+                return $item
+                    ->sortByDesc('created_at')
+                    ->groupBy( function ( $item ) {
+                        return $item->created_at->format('Y');
+                    });
+        });         
+    	return view('index', compact('posts', 'categories', 'archives'));
     	
     }
     public function create()
