@@ -14,6 +14,8 @@ Route::post('/posts/{post}/update', 'PostsController@update');
 
 Route::post('/posts/search', 'PostsController@search');
 
+Route::get('/posts/blog/{user}', 'PostsController@blog');
+
 
 Route::get('/categories/', 'CategoryController@index');
 

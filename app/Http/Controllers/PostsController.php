@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\User;
 use Carbon\Carbon;
 
 class PostsController extends Controller
@@ -26,9 +27,6 @@ class PostsController extends Controller
 
     	$posts = $posts->get();
 
-
-
-
     	$categories = Category::get();
     	// $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
     		// $archives = Post::select('created_at');
@@ -38,7 +36,6 @@ class PostsController extends Controller
     		},function($item){
     			return $item->created_at->year;
     		});
-    		dd($archives);
     		// ->count()
     		// ->orderByRaw('min(created_at) desc')
     		// ->get()
@@ -118,6 +115,15 @@ class PostsController extends Controller
 		$categories = Category::get();
 
 		return view('index', compact('posts', 'categories'));
+
+	}
+
+	public function blog(User $user) {
+
+		$categories = Category::get();
+		$posts = $user->posts;
+
+		return view('index', compact('user', 'posts', 'categories'));
 
 	}
 }
