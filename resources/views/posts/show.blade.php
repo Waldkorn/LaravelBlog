@@ -18,13 +18,20 @@
 
   </div>
 
-  <h3>
+  <h4>
 
     @if ($post->category != null)
+
       {{ $post->category->category_title }}
+
     @endif
 
-  </h3>
+  </h4>
+
+  <p class="blog-post-meta">
+     <a href='/posts/blog/{{ $post->user->id }}'>{{ $post->user->name }}</a> on
+    {{ $post->created_at->toFormattedDateString() }}
+  </p>
 
 	{!! $post->body !!}
 

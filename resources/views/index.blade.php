@@ -34,8 +34,7 @@
 
             @include('categories')
             <div>
-              <h4 class="font-italic">Archives</h4>
-              
+              <h4 class="font-italic">Archives</h4>   
               @foreach($archives as $year => $months)
                       <div id="heading_{{ $loop->index }}">
                           <h6 class="mb-0">
@@ -49,6 +48,28 @@
           </div>
 
           <div class="col-md-8 blog-main">
+
+            @if (! empty($user->blog_name))
+
+              @if ($user->id == Auth::id())
+
+                <form method="POST" action="/posts/blog/{{ $user->id }}/changeBlogName">
+                  {{ csrf_field() }}
+                  <div class="form-group">
+                    <input class="form-control" name="blogname" value="{{ $user->blog_name }}" placeholder="type a blogname..." required>
+                  </div>
+                </form>
+
+                @include('layouts.errors')
+
+              @else
+
+              <h1> {{ $user->blog_name }} </h1>
+              <hr>
+
+              @endif
+
+            @endif
 
             @foreach ($posts as $post)
 

@@ -17,10 +17,12 @@
 
   </h3>
   <p class="blog-post-meta">
-    {{ $post->user->name }} on
+    <a href='/posts/blog/{{ $post->user->id }}'>{{ $post->user->name }}</a> on
     {{ $post->created_at->toFormattedDateString() }}
   </p>
 
   {!! $post->body !!}
+
+  <hr>
 
 </div> 
