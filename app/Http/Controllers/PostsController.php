@@ -30,12 +30,19 @@ class PostsController extends Controller
 
 
     	$categories = Category::get();
-    	$archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-
-    		->groupBy('year', 'month')
-    		->orderByRaw('min(created_at) desc')
-    		->get()
-    		->toArray();
+    	// $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+    		// $archives = Post::select('created_at');
+    		// ->groupBy('year', 'month')
+    		$archives = Post::get()->groupBy(function ($item){
+    			return $item->created_at->month;
+    		},function($item){
+    			return $item->created_at->year;
+    		});
+    		dd($archives);
+    		// ->count()
+    		// ->orderByRaw('min(created_at) desc')
+    		// ->get()
+    		// ->toArray();
 
     	return view('index', compact('posts', 'categories', 'archives'));
 
