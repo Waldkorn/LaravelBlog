@@ -40,6 +40,7 @@
                           <h6 class="mb-0">
                               <a href="/{{$year}}/posts">
                               {{ $year }}
+                            </a>
                           </h6>
                       </div>
                   
@@ -51,23 +52,30 @@
 
             @if (! empty($user->blog_name))
 
+            <div class="jumbotron" style="background-image:url({{ $user->blog_header_picture }}); background-size:100%;">
+
               @if ($user->id == Auth::id())
 
-                <form method="POST" action="/posts/blog/{{ $user->id }}/changeBlogName">
-                  {{ csrf_field() }}
-                  <div class="form-group">
-                    <input class="form-control" name="blogname" value="{{ $user->blog_name }}" placeholder="type a blogname..." required>
-                  </div>
-                </form>
+                  <form method="POST" action="/posts/blog/{{ $user->id }}/changeBlogName">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                      <input class="form-control" name="blogname" value="{{ $user->blog_name }}" placeholder="type a blogname..." required>
+                    </div>
+                  </form>
 
                 @include('layouts.errors')
 
               @else
 
-              <h1> {{ $user->blog_name }} </h1>
-              <hr>
+                <div style="background-color:white; border-radius:5px">
+
+                  <h1> {{ $user->blog_name }} </h1>
+
+                </div>
 
               @endif
+
+            </div>
 
             @endif
 
