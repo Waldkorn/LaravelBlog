@@ -26,19 +26,19 @@ class PostsController extends Controller
 
     	$posts = $posts->get();
     	$categories = Category::get();
-    	// $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-    		// $archives = Post::select('created_at');
-    		// ->groupBy('year', 'month')
-    		$archives = Post::get()->groupBy(function ($item){
-    			return $item->created_at->month;
-    		},function($item){
-    			return $item->created_at->year;
-    		});
-    		dd($archives);
-    		// ->count()
-    		// ->orderByRaw('min(created_at) desc')
-    		// ->get()
-    		// ->toArray();
+    	$archives = Post::orderBy('created_at', 'desc')
+	        ->whereNotNull('created_at')
+	        ->get()
+	        ->groupBy(function(Post $post) {
+	            return $post->created_at->format('F');
+	        })
+	        ->map(function ($item) {
+	            return $item
+	                ->sortByDesc('created_at')
+	                ->groupBy( function ( $item ) {
+	                    return $item->created_at->format('Y');
+	                });
+        });			
 
     	return view('index', compact('posts', 'categories', 'archives'));
 
@@ -112,14 +112,54 @@ class PostsController extends Controller
 
 		$posts = Post::where('body','LIKE','%' . $search . '%')->Latest()->get();
 		$categories = Category::get();
-		$archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-
-    		->groupBy('year', 'month')
-    		->orderByRaw('min(created_at) desc')
-    		->get()
-    		->toArray();
-
+		$archives = Post::orderBy('created_at', 'desc')
+	        ->whereNotNull('created_at')
+	        ->get()
+	        ->groupBy(function(Post $post) {
+	            return $post->created_at->format('F');
+	        })
+	        ->map(function ($item) {
+	            return $item
+	                ->sortByDesc('created_at')
+	                ->groupBy( function ( $item ) {
+	                    return $item->created_at->format('Y');
+	                });
+        });	
 		return view('index', compact('posts', 'categories', 'archives'));
 
+	}
+
+	public function month( $year)
+	{
+		$posts = Post::Latest();
+
+    	if ($month = request('month')) {
+
+    		$posts->whereMonth('created_at', Carbon::parse($month)->month);
+
+    	}
+    	if ($year = request('year')) {
+
+    		$posts->whereYear('created_at', $year);
+
+    	}
+
+    	$posts = $posts->get();
+    	$categories = Category::get();
+    	$archives = Post::orderBy('created_at', 'desc')
+	        ->whereNotNull('created_at')
+	        ->get()
+	        ->groupBy(function(Post $post) {
+	            return $post->created_at->format('F');
+	        })
+	        ->map(function ($item) {
+	            return $item
+	                ->sortByDesc('created_at')
+	                ->groupBy( function ( $item ) {
+	                    return $item->created_at->format('Y');
+	                });
+        });			
+
+    	return view('index', compact('posts', 'categories', 'archives'));
 	}
 }
