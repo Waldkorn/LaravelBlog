@@ -132,4 +132,18 @@ class PostsController extends Controller
 		return view('index', compact('user', 'posts', 'categories'));
 
 	}
+
+	public function changeBlogName(User $user) {
+
+		$this->validate(request(), [
+			'blogname' => 'required'
+		]);
+
+		$user->blog_name = request()->blogname;
+
+		$user->save();
+
+		return back();
+
+	}
 }
