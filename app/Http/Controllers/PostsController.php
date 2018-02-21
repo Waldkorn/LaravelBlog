@@ -169,4 +169,12 @@ class PostsController extends Controller
 		return back();
 
 	}
+
+	function remove(Post $post) {
+
+		$post->delete();
+
+		return redirect('/');
+
+	}
 }

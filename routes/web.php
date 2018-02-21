@@ -18,6 +18,8 @@ Route::get('/posts/blog/{user}', 'PostsController@blog');
 
 Route::post('/posts/blog/{user}/changeBlogName', "PostsController@changeBlogName");
 
+Route::post('/posts/{post}/delete', 'PostsController@remove');
+
 
 Route::get('/categories/', 'CategoryController@index');
 

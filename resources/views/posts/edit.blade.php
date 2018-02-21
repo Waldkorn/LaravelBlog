@@ -4,44 +4,58 @@
 
 @include ('layouts.nav')
 
-<div class="container col-md-11">	
+<div class="container col-md-11">
 
-		<form Method="POST" action="update">
+	<hr>
 
-			{{ csrf_field() }}
+	<div class="row">
 
-			<div class="form-group">
+		@include ('comments.allowed')
 
-				<label for="title">Title:</label>
-				<input name="title" class="form-control" value="{{ $post->title }}">
+		<form action='/posts/{{ $post->id }}/delete' method="POST">
+      
+	    	{{ csrf_field() }}
+	 
+	    	<input type="submit" class="btn btn-danger" value="delete post">
 
-			</div>
-
-			<div class="form-group">
-	  
-			  	<label for="category">Category</label>
-			  	<select type="integer" class="form-control" id="category_id" name="category_id">
-			  		@foreach ($categories as $category)
-			  			<option value={{ $category->id }}>{{ $category->category_title }}</option>
-			  		@endforeach
-			  	</select>
-
-			</div>
-			<hr>
-
-			<div class="form-group">
-
-				<textarea name="body" class="form-control">{{ $post->body }}</textarea>
-
-			</div>
-
-			<button type="submit" class="btn btn-primary">Submit changes</button>
-		</form>
-		
-			@include ('comments.allowed')
-
-		</form>
+	  	</form>
 
 	</div>
+
+	<hr>	
+
+	<form Method="POST" action="update">
+
+		{{ csrf_field() }}
+
+		<div class="form-group">
+
+			<label for="title">Title:</label>
+			<input name="title" class="form-control" value="{{ $post->title }}">
+
+		</div>
+
+		<div class="form-group">
+  
+		  	<label for="category">Category</label>
+		  	<select type="integer" class="form-control" id="category_id" name="category_id">
+		  		@foreach ($categories as $category)
+		  			<option value={{ $category->id }}>{{ $category->category_title }}</option>
+		  		@endforeach
+		  	</select>
+
+		</div>
+
+		<div class="form-group">
+
+			<textarea name="body" class="form-control">{{ $post->body }}</textarea>
+
+		</div>
+
+		<button type="submit" class="btn btn-primary">Submit changes</button>
+		
+	</form>
+
+	<hr>
 
 </div>
