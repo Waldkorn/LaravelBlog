@@ -45,7 +45,9 @@
           <div class="row">
             <div>
             <strong>
+
               {{ $comment->created_at->diffForHumans() }}
+              
             </strong>
 
             {{ $comment->user->name }}:
@@ -53,9 +55,8 @@
             {{ $comment->body }}
 
             </div>
-              <div class="ml-auto">
+          <div class="ml-auto">
 
-          
           @if ($comment->user->id == Auth::id() || $post->user->id == Auth::id())
               <form action='/comments/{{ $comment->id }}/delete' method="POST" class="d-block">
                 {{ method_field('POST') }}
