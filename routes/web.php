@@ -38,6 +38,8 @@ Route::post('/comments/{post}/toggle', 'CommentsController@toggle');
 
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
+Route::post('/comments/{post}/showComments', 'CommentsController@showComments');
+
 
 Auth::routes();
 
@@ -45,4 +47,7 @@ Auth::routes();
 
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+Route::get('/information', 'InformationController@index');
 
