@@ -74,14 +74,15 @@ class PostsController extends Controller
 
 		]);
 
-		Post::create([
+		$post = new Post;
 
-			'title' => request('title'),
-			'body' => request('body'),
-			'category_id' => request('category_id'),
-			'user_id' => auth()->id()
+		$post->title = request('title');
+		$post->body = request('body');
+		$post->user_id = Auth()->id();
 
-		]);
+		$post->save();
+
+		$post->category()->attach(request('category_id'));
 	
 		return redirect('/');
 

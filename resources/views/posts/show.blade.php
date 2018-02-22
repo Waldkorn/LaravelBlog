@@ -22,7 +22,11 @@
 
     @if ($post->category != null)
 
-      {{ $post->category->category_title }}
+      @foreach ($post->category as $category)
+
+        {{ $category->category_title }}
+
+      @endforeach
 
     @endif
 
