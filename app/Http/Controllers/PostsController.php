@@ -157,14 +157,15 @@ class PostsController extends Controller
 
 	}
 
-	public function changeBlogName(User $user) {
+	public function blogEdit(User $user) {
 
 		$this->validate(request(), [
-			'blogname' => 'required'
+			'blogname' => 'required',
+			'blogpicture' => 'required'
 		]);
-
+		
+		$user->blog_header_picture = request()->blogpicture;
 		$user->blog_name = request()->blogname;
-
 		$user->save();
 
 		return back();
@@ -178,4 +179,5 @@ class PostsController extends Controller
 		return redirect('/');
 
 	}
+
 }

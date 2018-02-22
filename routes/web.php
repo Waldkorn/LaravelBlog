@@ -16,9 +16,12 @@ Route::post('/posts/search', 'PostsController@search');
 
 Route::get('/posts/blog/{user}', 'PostsController@blog');
 
-Route::post('/posts/blog/{user}/changeBlogName', "PostsController@changeBlogName");
+Route::post('/posts/blog/{user}/blogEdit', "PostsController@blogEdit");
 
 Route::post('/posts/{post}/delete', 'PostsController@remove');
+
+Route::get('/{month}/posts', 'PostsController@month');
+
 
 
 Route::get('/categories/', 'CategoryController@index');
@@ -41,4 +44,3 @@ Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/{month}/posts', 'PostsController@month');
