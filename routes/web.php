@@ -44,3 +44,7 @@ Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+
+Route::get('/profile/{profileId}/follow', 'ProfileController@followUser');
+
+Route::get('/{profileId}/unfollow', 'ProfileController@unFollowUser');

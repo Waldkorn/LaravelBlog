@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
@@ -28,9 +29,34 @@ class PostsController extends Controller
 			});
 	}
 
+	private function array_sort_by_column(&$array, $column, $direction = SORT_DESC) {
+	    $reference_array = array();
+
+	    foreach($array as $key => $row) {
+	        $reference_array[$key] = $row[$column];
+	    }
+
+	    array_multisort($reference_array, $direction, $array);
+	}
+
     public function index()
-    {
-    	$posts = Post::Latest();
+    {	
+    	if (Auth::check()) {
+
+    		$id = Auth::id();
+	    	$user = User::find($id);
+	    	$followings = $user->followings()->get();
+	    	$posts = array();
+		  	foreach ($followings as $following) {
+				$helperPosts = $following->posts()->Latest()->get();
+				foreach($helperPosts as $helperPost) {
+					$posts[] = $helperPost;
+				}
+			}
+			$this->array_sort_by_column($posts, 'created_at');
+		} else {
+	    	$posts = Post::Latest()->get();
+	    }
 
     	if ($month = request('month')) {
 
@@ -43,7 +69,6 @@ class PostsController extends Controller
 
     	}
 
-    	$posts = $posts->get();
     	$categories = Category::get();
     	$archives = $this->archives();
 
@@ -153,7 +178,18 @@ class PostsController extends Controller
 		$posts = $user->posts;
 		$archives = $this->archives();
 
-		return view('index', compact('user', 'posts', 'categories', 'archives'));
+		$followers = $user->followers()->get();
+
+		$following = false;
+		
+
+		foreach ($followers as $follower) {
+			if (Auth::user()->id == $follower->id) {
+				$following = true;
+			}
+		}
+
+		return view('index', compact('user', 'posts', 'categories', 'archives', 'following'));
 
 	}
 
