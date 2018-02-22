@@ -12,7 +12,11 @@
   <h3>
 
       @if ($post->category != null)
-        {{ $post->category->category_title }}
+        @foreach ($post->category as $category)
+          <a href="/categories/{{ $category->id }}/posts">
+            <span class="border">{{ $category->category_title }}</span>
+          </a>
+        @endforeach
       @endif
 
   </h3>

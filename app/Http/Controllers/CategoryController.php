@@ -21,7 +21,9 @@ class CategoryController extends Controller
     {
 
     	$categories = category::get();
-    	$posts = Post::Latest()->where('category_id', '=', $category->id)->get();
+        $posts = $category->post()->get();
+    	//$posts = Post::Latest()->where('category_id', '=', $category->id)->get();
+
         $archives = Post::orderBy('created_at', 'desc')
             ->whereNotNull('created_at')
             ->get()
@@ -38,6 +40,7 @@ class CategoryController extends Controller
     	return view('index', compact('posts', 'categories', 'archives'));
     	
     }
+
     public function create()
     {
     	$this->validate(request(), [

@@ -33,6 +33,7 @@
             </form>
 
             @include('categories')
+            
             <div>
               <h4 class="font-italic">Archives</h4>   
               @foreach($archives as $year => $months)
