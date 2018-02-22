@@ -68,4 +68,24 @@ class CommentsController extends Controller
             return back();
         }
     }
+    
+    public function showComments(Post $post)
+    {
+        if ($post->comments_shown == 1) {
+
+            $post->comments_shown = 0;
+
+            $post->save();
+
+            return back();
+
+        } else {
+
+            $post->comments_shown = 1;
+
+            $post->save();
+
+            return back();
+        }
+    }
 }

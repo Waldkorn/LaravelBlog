@@ -48,7 +48,7 @@
       </div>
 
     <hr>
-
+ @if ($post->comments_shown == 1)
   <div class="comments">
 	  <ul class="list-group">
 	  	@foreach ($post->comments as $comment)
@@ -84,6 +84,9 @@
 	  	@endforeach
 	  </ul>
   </div>
+  @else
+  no comments for this post available
+  @endif
   <hr>
 
 

@@ -12,6 +12,8 @@
 
 		@include ('comments.allowed')
 
+		@include ('comments.showcomments')
+		
 		<form action='/posts/{{ $post->id }}/delete' method="POST">
       
 	    	{{ csrf_field() }}

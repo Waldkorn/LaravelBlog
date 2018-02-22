@@ -3,6 +3,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse navbar-nav" id="navbarNavAltMarkup">
+    <a class="nav-item nav-link active" href="/information">Information</a>
       <a class="nav-item nav-link active" href='/'>Home <span class="sr-only">(current)</span></a>
       @if (Auth::check())
         <a class="nav-item nav-link" href="/posts/create">Create Post</a>
