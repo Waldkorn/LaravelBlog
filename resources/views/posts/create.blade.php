@@ -27,7 +27,7 @@
 	  	<label for="category">Category</label>
 	  	<select type="array" class="form-control" id="category_id[]" name="category_id[]" multiple>
 	  		@foreach ($categories as $category)
-	  			<option value={{ $category->id }}>{{ $category->category_title }}</option>
+	  			<option value="{{ $category->id }}">{{ $category->category_title }}</option>
 	  		@endforeach
 	  	</select>
 	  	
