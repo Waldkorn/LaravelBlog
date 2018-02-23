@@ -12,51 +12,11 @@ use Carbon\Carbon;
 class PostsController extends Controller
 {	
 
-	private function array_sort_by_column(&$array, $column, $direction = SORT_DESC) {
-	    $reference_array = array();
-
-	    foreach($array as $key => $row) {
-	        $reference_array[$key] = $row[$column];
-	    }
-
-	    array_multisort($reference_array, $direction, $array);
-	}
-
     public function index()
     {	
-    	if (Auth::check()) {
+    	$posts = $this->getPosts();
 
-    		$id = Auth::id();
-	    	$user = User::find($id);
-	    	$followings = $user->followings()->get();
-	    	$posts = array();
-		  	foreach ($followings as $following) {
-				$helperPosts = $following->posts()->Latest()->get();
-				foreach($helperPosts as $helperPost) {
-					$posts[] = $helperPost;
-				}
-			}
-			$this->array_sort_by_column($posts, 'created_at');
-		} else {
-	    	$posts = Post::Latest()->get();
-	    }
-
-    	if ($month = request('month')) {
-
-    		$posts->whereMonth('created_at', Carbon::parse($month)->month);
-
-    	}
-    	if ($year = request('year')) {
-
-    		$posts->whereYear('created_at', $year);
-
-    	}
-
-    	$categories = Category::get();
-    	$archives = $this->archives();
-    	$topUsers = $this->topUsers();
-
-    	return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
+    	return view('index', compact('posts'));
 
     }
 
@@ -68,8 +28,7 @@ class PostsController extends Controller
 	public function create()
 	{
 
-		$categories = Category::get();
-		return view('posts.create', compact('categories'));
+		return view('posts.create');
 
 	}
 
@@ -100,8 +59,7 @@ class PostsController extends Controller
 	public function edit(Post $post) 
 	{
 
-		$categories = Category::get();
-		return view('/posts.edit', compact('post', 'categories'));
+		return view('/posts.edit', compact('post'));
 
 	}
 
@@ -128,10 +86,7 @@ class PostsController extends Controller
 		$search = $request->search;
 
 		$posts = Post::where('body','LIKE','%' . $search . '%')->Latest()->get();
-		$categories = Category::get();
-		$archives = $this->archives();
-		$topUsers = $this->topUsers();
-		return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
+		return view('index', compact('posts'));
 
 	}
 
@@ -151,23 +106,17 @@ class PostsController extends Controller
     	}
 
     	$posts = $posts->get();
-    	$categories = Category::get();
-    	$archives = $this->archives();
-    	$topUsers = $this->topUsers();
 
-    	return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
+    	return view('index', compact('posts'));
 	}
 
 	public function blog(User $user) {
 
-		$categories = Category::get();
 		$posts = $user->posts->sortByDesc('created_at');
-		$archives = $this->archives();
 
 		$followers = $user->followers()->get();
 
 		$following = false;
-		
 
 		foreach ($followers as $follower) {
 			if(Auth::check()) {
@@ -177,9 +126,7 @@ class PostsController extends Controller
 			}
 		}
 
-		$topUsers = $this->topUsers();
-
-		return view('index', compact('user', 'posts', 'categories', 'archives', 'following', 'topUsers'));
+		return view('index', compact('user', 'posts', 'following'));
 
 	}
 
@@ -206,36 +153,39 @@ class PostsController extends Controller
 
 	}
 
-	private function archives() 
-	{
-		return Post::orderBy('created_at', 'desc')
-	        ->whereNotNull('created_at')
-	        ->get()
-	        ->groupBy(function(Post $post) {
-	            return $post->created_at->format('F');
-	        })
-	        ->map(function ($item) {
-	            return $item
-	                ->sortByDesc('created_at')
-	                ->groupBy( function ( $item ) {
-	                    return $item->created_at->format('Y');
-	                });
-      			
-			});
+	private function array_sort_by_column(&$array, $column, $direction = SORT_DESC) {
+	    $reference_array = array();
+
+	    foreach($array as $key => $row) {
+	        $reference_array[$key] = $row[$column];
+	    }
+
+	    array_multisort($reference_array, $direction, $array);
 	}
 
-	private function topUsers()
-	{
+	private function getPosts() {
+		if (Auth::check()) {
 
-    $topUsers = User::with('followers')->get()->sortBy(function(User $user)
-	{
+    		$id = Auth::id();
+	    	$user = User::find($id);
+	    	$followings = $user->followings()->get();
+	    	$posts = array();
+		  	foreach ($followings as $following) {
+				$helperPosts = $following->posts()->Latest()->get();
+				foreach($helperPosts as $helperPost) {
+					$posts[] = $helperPost;
+				}
+			}
 
-	    return $user->followers->count();
+			$this->array_sort_by_column($posts, 'created_at');
 
-	})->reverse();
+		} else {
 
-    return $topUsers;
+	    	$posts = Post::Latest()->get();
+	    	
+	    }
 
+	    return $posts;
 	}
 
 }
