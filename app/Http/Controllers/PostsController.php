@@ -15,6 +15,7 @@ class PostsController extends Controller
 
     public function index()
     {	
+
     	$posts = $this->getPosts();
 
     	return view('index', compact('posts'));
@@ -23,7 +24,9 @@ class PostsController extends Controller
 
 	public function show(Post $post)
 	{
+
 		return view('posts.show', compact('post'));
+
 	}
 
 	public function create()
@@ -122,41 +125,6 @@ class PostsController extends Controller
     	return view('index', compact('posts'));
 	}
 
-	public function blog(User $user) {
-
-		$posts = $user->posts->sortByDesc('created_at');
-
-		$followers = $user->followers()->get();
-
-		$following = false;
-
-		foreach ($followers as $follower) {
-			if(Auth::check()) {
-				if (Auth::user()->id == $follower->id) {
-					$following = true;
-				}
-			}
-		}
-
-		return view('index', compact('user', 'posts', 'following'));
-
-	}
-
-	public function blogEdit(User $user) {
-
-		$this->validate(request(), [
-			'blogname' => 'required',
-			'blogpicture' => 'required'
-		]);
-		
-		$user->blog_header_picture = request()->blogpicture;
-		$user->blog_name = request()->blogname;
-		$user->save();
-
-		return back();
-
-	}
-
 	function remove(Post $post) {
 
 		$post->delete();
@@ -176,6 +144,7 @@ class PostsController extends Controller
 	}
 
 	private function getPosts() {
+
 		if (Auth::check()) {
 
     		$id = Auth::id();
