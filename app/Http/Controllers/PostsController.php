@@ -130,7 +130,8 @@ class PostsController extends Controller
 		$posts = Post::where('body','LIKE','%' . $search . '%')->Latest()->get();
 		$categories = Category::get();
 		$archives = $this->archives();
-		return view('index', compact('posts', 'categories', 'archives'));
+		$topUsers = $this->topUsers();
+		return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
 
 	}
 
@@ -152,8 +153,9 @@ class PostsController extends Controller
     	$posts = $posts->get();
     	$categories = Category::get();
     	$archives = $this->archives();
+    	$topUsers = $this->topUsers();
 
-    	return view('index', compact('posts', 'categories', 'archives'));
+    	return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
 	}
 
 	public function blog(User $user) {

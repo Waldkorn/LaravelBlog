@@ -25,45 +25,21 @@
         <div class="row">
           <div class="col-md-3 category-main">
 
-            <form method="POST" action="/posts/search">
-              {{ csrf_field() }}
-              <div class="form-group">
-                <input class="form-control" name="search" placeholder="Search articles...">
-              </div>
-            </form>
+            @include( 'layouts.search' )
 
             <hr>
 
-            <div>
-            <h4 class="font-italic">Top users</h4>   
-            @foreach($topUsers as $topUser)
-                <h6 class="mb-0">
-                  <a href="/posts/blog/{{ $topUser->id }}">
-                    {{ $topUser->name }}
-                  </a><br>
-                </h6>
-             @endforeach
-            
-          </div>
+            @include( 'layouts.topusers' )
 
-          <hr>
+            <hr>
 
             @include('categories')
 
-          <hr>
+            <hr>
             
-            <div>
-              <h4 class="font-italic">Archives</h4>   
-              @foreach($archives as $year => $months)
-                <!-- <div id="heading_{{ $loop->index }}"> -->
-                  <h6 class="mb-0">
-                      <a href="/{{$year}}/posts">
-                      {{ $year }}
-                      </a><br>
-                  </h6>
-                <!-- </div> -->
-              @endforeach
-            </div>
+            @include('layouts.archives')
+
+            <hr>
           
 
 
