@@ -25,6 +25,8 @@
         <div class="row">
           <div class="col-md-3 category-main">
 
+            <hr>
+
             @include( 'layouts.search' )
 
             <hr>
@@ -34,6 +36,8 @@
             <hr>
 
             @include('categories')
+
+            @include('layouts.errors')
 
             <hr>
             

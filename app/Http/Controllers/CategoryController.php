@@ -21,22 +21,8 @@ class CategoryController extends Controller
     {
 
     	$categories = category::get();
-        $posts = $category->post()->get();
-    	//$posts = Post::Latest()->where('category_id', '=', $category->id)->get();
-
-        $archives = Post::orderBy('created_at', 'desc')
-            ->whereNotNull('created_at')
-            ->get()
-            ->groupBy(function(Post $post) {
-                return $post->created_at->format('F');
-            })
-            ->map(function ($item) {
-                return $item
-                    ->sortByDesc('created_at')
-                    ->groupBy( function ( $item ) {
-                        return $item->created_at->format('Y');
-                    });
-        });         
+        $posts = $category->post()->Latest()->get();
+     
     	return view('index', compact('posts', 'categories', 'archives'));
     	
     }
@@ -45,7 +31,7 @@ class CategoryController extends Controller
     {
     	$this->validate(request(), [
 
-			'category_title' => 'required'
+			'category_title' => 'required | min:2'
 
 		]);
 
