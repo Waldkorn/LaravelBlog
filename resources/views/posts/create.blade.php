@@ -53,5 +53,6 @@
 
 You're not supposed to be here! Please <a href="/login">login</a>
 
+@endif
 
 @endsection
