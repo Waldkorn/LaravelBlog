@@ -21,7 +21,7 @@
 
   </h3>
   <p class="blog-post-meta">
-    <a href='/posts/blog/{{ $post->user->id }}'>{{ $post->user->name }}</a> on
+    <a href='/blog/{{ $post->user->id }}'>{{ $post->user->name }}</a> on
     {{ $post->created_at->toFormattedDateString() }}
   </p>
 

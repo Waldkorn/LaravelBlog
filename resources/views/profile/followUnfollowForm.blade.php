@@ -1,9 +1,9 @@
 @if ($following == false)
 
-	<a href="/profile/{{ $user->id }}/follow">Follow User</a>
+	<a href="/profile/{{ $user->id }}/follow"><button class="btn-success">Follow</button></a>
 
 @else
 
-	<a href="/{{ $user->id }}/unfollow">Unfollow User</a>
+	<a href="/{{ $user->id }}/unfollow"><button class="btn-danger">Unfollow</button></a>
 
 @endif

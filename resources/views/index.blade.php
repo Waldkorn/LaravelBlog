@@ -47,6 +47,8 @@
 
             @include('profile.header')
 
+            <hr>
+
             @foreach ($posts as $post)
 
              @include('layouts.posts')

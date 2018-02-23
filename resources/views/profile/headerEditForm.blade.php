@@ -1,4 +1,4 @@
-<form method="POST" action="/posts/blog/{{ $user->id }}/blogEdit">
+<form method="POST" action="/blog/{{ $user->id }}/blogEdit">
   {{ csrf_field() }}
   <div class="form-group">
     <div class="container">

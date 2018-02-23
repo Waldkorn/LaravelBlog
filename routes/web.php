@@ -1,5 +1,9 @@
 <?php
 
+////////////////////////////
+// Postscontroller routes //
+////////////////////////////
+
 Route::get('/', 'PostsController@index');
 
 Route::get('/posts/create', 'PostsController@create');
@@ -14,15 +18,23 @@ Route::post('/posts/{post}/update', 'PostsController@update');
 
 Route::post('/posts/search', 'PostsController@search');
 
-Route::get('/posts/blog/{user}', 'PostsController@blog');
-
-Route::post('/posts/blog/{user}/blogEdit', "PostsController@blogEdit");
-
 Route::post('/posts/{post}/delete', 'PostsController@remove');
 
 Route::get('/{month}/posts', 'PostsController@month');
 
 
+//////////////////////////
+// BlogController routes//
+//////////////////////////
+
+Route::get('/blog/{user}', 'BlogController@index');
+
+Route::post('/blog/{user}/blogEdit', "BlogController@edit");
+
+
+///////////////////////////////
+// CategoryController routes //
+///////////////////////////////
 
 Route::get('/categories/', 'CategoryController@index');
 
@@ -31,6 +43,9 @@ Route::get('/categories/{category}/posts', 'CategoryController@show');
 Route::post('/categories/create', 'CategoryController@create');
 
 
+///////////////////////////////
+// CommentsController routes //
+///////////////////////////////
 
 Route::post('/comments/{comment}/delete', 'CommentsController@delete');
 
@@ -41,16 +56,26 @@ Route::post('/posts/{post}/comments', 'CommentsController@store');
 Route::post('/comments/{post}/showComments', 'CommentsController@showComments');
 
 
-Auth::routes();
+///////////////////////////
+// Authentication routes //
+///////////////////////////
 
+Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
+//////////////////////////////
+// ProfileController routes //
+//////////////////////////////
 
 Route::get('/profile/{profileId}/follow', 'ProfileController@followUser');
 
 Route::get('/{profileId}/unfollow', 'ProfileController@unFollowUser');
 
+
+//////////////////////////////////
+// InformationController routes //
+//////////////////////////////////
 
 Route::get('/information', 'InformationController@index');
