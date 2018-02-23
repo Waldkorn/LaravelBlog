@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\User;
 use Carbon\Carbon;
+use App\Mail\Followmail;
 
 class PostsController extends Controller
 {	
@@ -105,7 +106,18 @@ class PostsController extends Controller
 		$post->body = request('body');
 		$post->user_id = Auth()->id();
 
+		$id = Auth::id();
+		$user = User::find($id);
+		$followers = $user->followers()->get();
+
 		$post->save();
+
+		foreach ($followers as $follower) {
+
+
+		\Mail::to($follower->email)->send( new Followmail);
+
+		}
 
 		$post->category()->attach(request('category_id'));
 	
