@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\User;
+use App\Mail\Commentreceived;
 
 
 class CommentsController extends Controller
@@ -31,6 +33,10 @@ class CommentsController extends Controller
         	$comment->body = request()->body;
 
             $comment->save();
+
+            $user = $post->user->email;
+
+            \Mail::to($user)->send( new Commentreceived);
 
         	return back();
         }
