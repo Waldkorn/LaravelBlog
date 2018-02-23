@@ -61,6 +61,7 @@ Route::post('/comments/{post}/showComments', 'CommentsController@showComments');
 ///////////////////////////
 
 Auth::routes();
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
