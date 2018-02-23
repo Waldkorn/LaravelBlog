@@ -14,7 +14,7 @@
       @if ($post->category != null)
         @foreach ($post->category as $category)
           <a href="/categories/{{ $category->id }}/posts">
-            <span class="border">{{ $category->category_title }}</span>
+            <h6 class="d-inline">{{ $category->category_title }}</h6>
           </a>
         @endforeach
       @endif

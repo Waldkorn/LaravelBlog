@@ -32,22 +32,43 @@
               </div>
             </form>
 
+            <hr>
+
+            <div>
+            <h4 class="font-italic">Top users</h4>   
+            @foreach($topUsers as $topUser)
+                <h6 class="mb-0">
+                  <a href="/posts/blog/{{ $topUser->id }}">
+                    {{ $topUser->name }}
+                  </a><br>
+                </h6>
+             @endforeach
+            
+          </div>
+
+          <hr>
+
             @include('categories')
+
+          <hr>
             
             <div>
               <h4 class="font-italic">Archives</h4>   
               @foreach($archives as $year => $months)
-                      <div id="heading_{{ $loop->index }}">
-                          <h6 class="mb-0">
-                              <a href="/{{$year}}/posts">
-                              {{ $year }}
-                            </a>
-                          </h6>
-                      </div>
-                  
+                <!-- <div id="heading_{{ $loop->index }}"> -->
+                  <h6 class="mb-0">
+                      <a href="/{{$year}}/posts">
+                      {{ $year }}
+                      </a><br>
+                  </h6>
+                <!-- </div> -->
               @endforeach
             </div>
-          </div>
+          
+
+
+
+        </div>
 
           <div class="col-md-8 blog-main">
 
@@ -81,17 +102,21 @@
 
                 </div>
 
-                @if ($following == false)
+                @if (Auth::check())
 
-                <a href="/profile/{{ $user->id }}/follow">Follow User</a>
+                  @if ($following == false)
 
-                @else
+                  <a href="/profile/{{ $user->id }}/follow">Follow User</a>
 
-                <a href="/{{ $user->id }}/unfollow">Unfollow User</a>
+                  @else
 
+                  <a href="/{{ $user->id }}/unfollow">Unfollow User</a>
+
+                  @endif
                 @endif
 
               @endif
+
 
             </div>
 
