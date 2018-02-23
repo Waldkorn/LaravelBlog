@@ -6,19 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\User;
+use App\Post;
 
 class Followmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+    public $post;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( $user, $post)
     {
-        //
+        $this->user = $user;
+        $this->post = $post;
     }
 
     /**
@@ -29,7 +34,7 @@ class Followmail extends Mailable
     public function build()
     {
 
-        return $this->view('emails.Followmail');
-        
+        return $this->markdown('emails.Followmail');
+
     }
 }

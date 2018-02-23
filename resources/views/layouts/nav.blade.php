@@ -9,7 +9,7 @@
         <a class="nav-item nav-link" href="/posts/create">Create Post</a>
         <div class="nav-item nav-link active ml-auto">
           <span>
-            Welcome <a href="/posts/blog/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>(<a class="nav-link d-inline" href="/logout" style="padding-left:0px; padding-right:0px;">Logout</a>)
+            Welcome <a href="/blog/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>(<a class="nav-link d-inline" href="/logout" style="padding-left:0px; padding-right:0px;">Logout</a>)
           </span>
         </div>
       @else

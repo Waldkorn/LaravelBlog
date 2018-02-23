@@ -58,10 +58,11 @@ class PostsController extends Controller
 
 		$post->save();
 
+		//dd($post);
+
 		foreach ($followers as $follower) {
 
-
-		\Mail::to($follower->email)->send( new Followmail);
+		\Mail::to($follower->email)->send( new Followmail($user,$post));
 
 		}
 

@@ -34,9 +34,9 @@ class CommentsController extends Controller
 
             $comment->save();
 
-            $user = $post->user->email;
+            //dd($post);
 
-            \Mail::to($user)->send( new Commentreceived);
+            \Mail::to($post->user->email)->send( new Commentreceived($post));
 
         	return back();
         }

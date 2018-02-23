@@ -11,13 +11,14 @@
            <h6 class="font-italic">Ever wanted to start your own blog? register now!</h6><br>
            	<p>Upon registering you can get several benefits:<br>
 			   You will be able to comment on posts.<br>
-			   Follow your favorite bloggers.<br>
+			   Follow your favorite bloggers, and receive emails when they have a new post.<br>
 			   And be able to start your very own blog!</p>
 			<br>
 			<p>As a registered blogger you can decide the looks and name for your own blog.<br>
 			   You can create posts, with a title and add categories for people to find your post.<br>
 			   Once published there is an option to edit the post incase you made a mistake or changed your mind, or even delete it.<br>
 			   You can also decide if you want readers to be able to comment on your posts or not.<br> 
+			   If comments are available for your post you will get an email if one is placed.<br>
 			   Hide all comments written, and even delete comments that you do not want to see.<br>
 
 			</p>
