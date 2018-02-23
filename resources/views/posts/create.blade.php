@@ -2,6 +2,8 @@
 
 @section ('content')
 
+@if (Auth::check())
+
 	@include ('layouts.nav')
 
 	<div class="container col-md-11">
@@ -44,6 +46,12 @@
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script src="{{ asset('js/text_expander.js') }}"></script>
+
+@else
+
+<h1>HEY!</h1>
+
+You're not supposed to be here! Please <a href="/login">login</a>
 
 
 @endsection
