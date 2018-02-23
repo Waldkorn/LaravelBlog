@@ -159,7 +159,7 @@ class PostsController extends Controller
 	public function blog(User $user) {
 
 		$categories = Category::get();
-		$posts = $user->posts;
+		$posts = $user->posts->sortByDesc('created_at');
 		$archives = $this->archives();
 
 		$followers = $user->followers()->get();
