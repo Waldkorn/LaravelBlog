@@ -53,11 +53,23 @@
 
             <hr>
 
-            @foreach ($posts as $post)
+            @if (!empty($posts)) 
 
-             @include('layouts.posts')
+              @foreach ($posts as $post)
 
-            @endforeach
+               @include('layouts.posts')
+
+              @endforeach
+
+            @else
+
+              <h1> Welcome! </h1>
+
+              Use the top users section to follow bloggers
+
+            @endif
+
+
 
           </div><!-- /.blog-main -->
         </div><!-- /.row -->
