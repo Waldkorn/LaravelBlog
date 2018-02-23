@@ -31,7 +31,7 @@
 
             <hr>
 
-            @include( 'layouts.topusers' )
+            @include( 'layouts.topUsers' )
 
             <hr>
 
