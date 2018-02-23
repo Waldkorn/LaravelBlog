@@ -42,5 +42,8 @@
 
 </div>
 
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script src="{{ asset('js/text_expander.js') }}"></script>
+
 
 @endsection

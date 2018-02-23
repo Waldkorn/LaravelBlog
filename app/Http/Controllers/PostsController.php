@@ -12,23 +12,6 @@ use App\Mail\Followmail;
 
 class PostsController extends Controller
 {	
-	private function archives() 
-	{
-		return Post::orderBy('created_at', 'desc')
-	        ->whereNotNull('created_at')
-	        ->get()
-	        ->groupBy(function(Post $post) {
-	            return $post->created_at->format('F');
-	        })
-	        ->map(function ($item) {
-	            return $item
-	                ->sortByDesc('created_at')
-	                ->groupBy( function ( $item ) {
-	                    return $item->created_at->format('Y');
-	                });
-      			
-			});
-	}
 
 	private function array_sort_by_column(&$array, $column, $direction = SORT_DESC) {
 	    $reference_array = array();
@@ -72,8 +55,9 @@ class PostsController extends Controller
 
     	$categories = Category::get();
     	$archives = $this->archives();
+    	$topUsers = $this->topUsers();
 
-    	return view('index', compact('posts', 'categories', 'archives'));
+    	return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
 
     }
 
@@ -158,7 +142,8 @@ class PostsController extends Controller
 		$posts = Post::where('body','LIKE','%' . $search . '%')->Latest()->get();
 		$categories = Category::get();
 		$archives = $this->archives();
-		return view('index', compact('posts', 'categories', 'archives'));
+		$topUsers = $this->topUsers();
+		return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
 
 	}
 
@@ -180,14 +165,15 @@ class PostsController extends Controller
     	$posts = $posts->get();
     	$categories = Category::get();
     	$archives = $this->archives();
+    	$topUsers = $this->topUsers();
 
-    	return view('index', compact('posts', 'categories', 'archives'));
+    	return view('index', compact('posts', 'categories', 'archives', 'topUsers'));
 	}
 
 	public function blog(User $user) {
 
 		$categories = Category::get();
-		$posts = $user->posts;
+		$posts = $user->posts->sortByDesc('created_at');
 		$archives = $this->archives();
 
 		$followers = $user->followers()->get();
@@ -196,12 +182,16 @@ class PostsController extends Controller
 		
 
 		foreach ($followers as $follower) {
-			if (Auth::user()->id == $follower->id) {
-				$following = true;
+			if(Auth::check()) {
+				if (Auth::user()->id == $follower->id) {
+					$following = true;
+				}
 			}
 		}
 
-		return view('index', compact('user', 'posts', 'categories', 'archives', 'following'));
+		$topUsers = $this->topUsers();
+
+		return view('index', compact('user', 'posts', 'categories', 'archives', 'following', 'topUsers'));
 
 	}
 
@@ -225,6 +215,38 @@ class PostsController extends Controller
 		$post->delete();
 
 		return redirect('/');
+
+	}
+
+	private function archives() 
+	{
+		return Post::orderBy('created_at', 'desc')
+	        ->whereNotNull('created_at')
+	        ->get()
+	        ->groupBy(function(Post $post) {
+	            return $post->created_at->format('F');
+	        })
+	        ->map(function ($item) {
+	            return $item
+	                ->sortByDesc('created_at')
+	                ->groupBy( function ( $item ) {
+	                    return $item->created_at->format('Y');
+	                });
+      			
+			});
+	}
+
+	private function topUsers()
+	{
+
+    $topUsers = User::with('followers')->get()->sortBy(function(User $user)
+	{
+
+	    return $user->followers->count();
+
+	})->reverse();
+
+    return $topUsers;
 
 	}
 

@@ -25,77 +25,27 @@
         <div class="row">
           <div class="col-md-3 category-main">
 
-            <form method="POST" action="/posts/search">
-              {{ csrf_field() }}
-              <div class="form-group">
-                <input class="form-control" name="search" placeholder="Search articles...">
-              </div>
-            </form>
+            @include( 'layouts.search' )
+
+            <hr>
+
+            @include( 'layouts.topusers' )
+
+            <hr>
 
             @include('categories')
+
+            <hr>
             
-            <div>
-              <h4 class="font-italic">Archives</h4>   
-              @foreach($archives as $year => $months)
-                      <div id="heading_{{ $loop->index }}">
-                          <h6 class="mb-0">
-                              <a href="/{{$year}}/posts">
-                              {{ $year }}
-                            </a>
-                          </h6>
-                      </div>
-                  
-              @endforeach
-            </div>
-          </div>
+            @include('layouts.archives')
+
+            <hr>
+
+        </div>
 
           <div class="col-md-8 blog-main">
 
-            @if (! empty($user->blog_name))
-
-            <div class="jumbotron" style="background-image:url({{ $user->blog_header_picture }}); background-size:100%;">
-
-              @if ($user->id == Auth::id())
-
-                  <form method="POST" action="/posts/blog/{{ $user->id }}/blogEdit">
-                    {{ csrf_field() }}
-                    
-                      <div class="form-group">
-                        <div class="container">
-                          <div class="row">
-                            <input class="form-control" name="blogpicture" value="{{ $user->blog_header_picture }}" placeholder="type an url..." required>
-                            <input class="form-control" name="blogname" value="{{ $user->blog_name }}" placeholder="type a blogname..." required>
-                            <input type="submit" class="btn btn-warning ml-auto" value="Edit Blog">
-                          </div>
-                        </div>
-                      </div>
-                  </form>
-
-                @include('layouts.errors')
-
-              @else
-
-                <div style="background-color:white; border-radius:5px">
-
-                  <h1> {{ $user->blog_name }} </h1>
-
-                </div>
-
-                @if ($following == false)
-
-                <a href="/profile/{{ $user->id }}/follow">Follow User</a>
-
-                @else
-
-                <a href="/{{ $user->id }}/unfollow">Unfollow User</a>
-
-                @endif
-
-              @endif
-
-            </div>
-
-            @endif
+            @include('profile.header')
 
             @foreach ($posts as $post)
 

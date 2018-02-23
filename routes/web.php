@@ -54,4 +54,3 @@ Route::get('/{profileId}/unfollow', 'ProfileController@unFollowUser');
 
 
 Route::get('/information', 'InformationController@index');
-
