@@ -25,6 +25,6 @@ class UpdatePostsTable3 extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('followers');
     }
 }

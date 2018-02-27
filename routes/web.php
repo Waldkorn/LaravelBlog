@@ -71,7 +71,13 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/profile/{profileId}/follow', 'ProfileController@followUser');
 
-Route::get('/{profileId}/unfollow', 'ProfileController@unFollowUser');
+Route::get('/profile/{profileId}/unfollow', 'ProfileController@unFollowUser');
+
+Route::get('/profile/{profileName}/upgrade', 'profileController@upgrade');
+
+Route::post('/profile/{profileName}/setUpgrade', 'profileController@setUpgrade');
+
+Route::get('/profile', 'profileController@read');
 
 
 //////////////////////////////////

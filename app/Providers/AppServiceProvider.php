@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        
         $topUsers = $this->topUsers();
         $archives = $this->archives();
         $categories = Category::get();
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
     }
 
     private function topUsers()

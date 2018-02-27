@@ -37,7 +37,34 @@
 	    <label for="Body">Body</label>
 	   <textarea id="body" name="body" class="form-control" ></textarea>
 	  </div>
-	  <button type="submit" class="btn btn-primary">Publish</button>
+
+	  	@if (Auth::user()->hasRole('paying_user') || Auth::user()->posts_count < 5)
+	  
+	  		<button type="submit" class="btn btn-primary">Publish</button>
+
+		  	@if (Auth::user()->hasRole('non_paying_user'))
+
+				<div class="card text-white bg-warning mb-3" style="max-width: 50%;">
+				  <div class="card-body">
+				    <p class="card-text">Warning! You have only {{ 5 - Auth::user()->posts_count }} free posts left.</p>
+				  </div>
+				</div>
+
+			@endif
+
+		@else
+
+			<div class="card text-white bg-danger mb-3" style="max-width: 50%;">
+			    <div class="card-body">
+			    	<p class="card-text">Please <a href="/profile/{{ Auth::user()->name }}/upgrade"> upgrade your account</a> to post.</p>
+			    </div>
+			</div>
+
+	  	@endif
+
+
+
+	  
 
 	  @include ('layouts.errors')
 	</form>
