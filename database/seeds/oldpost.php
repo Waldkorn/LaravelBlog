@@ -13,7 +13,6 @@ class oldpost extends Seeder
     {
         DB::table('posts')->insert([
             'title' => "dit is een titel",
-            'category_id' => 1,
             'body' => "dit is een blog post",
             'comments_allowed' => 1,
             'user_id' => 1,
