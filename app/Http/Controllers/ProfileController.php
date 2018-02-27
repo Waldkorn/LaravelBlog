@@ -9,7 +9,7 @@ use App\User;
 use App\Post;
 use App\Role;
 
-class ProfileController extends Controller
+class ProfileController extends ViewShareController
 {
     
     public function followUser(int $profileId)
@@ -66,8 +66,7 @@ class ProfileController extends Controller
 		$user->roles()->attach($role_paying_user->id);
 		$user->roles()->detach($role_non_paying_user->id);
 
-
-		dd($user);
+		return redirect('/posts/create');
 
 	}
 
