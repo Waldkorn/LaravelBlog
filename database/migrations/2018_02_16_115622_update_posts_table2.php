@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdatePostsTable extends Migration
+class UpdatePostsTable2 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdatePostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->boolean('comments_shown')->default(true);
+            $table->boolean('comments_allowed')->default(true);
         });
     }
 
