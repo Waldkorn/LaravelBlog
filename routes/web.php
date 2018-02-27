@@ -1,5 +1,7 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 ////////////////////////////
 // Postscontroller routes //
 ////////////////////////////
@@ -99,3 +101,25 @@ Route::get('/language/toggle', 'LanguageController@toggle');
 //////////////////////////////////
 
 Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+
+//////////////////////////////////
+// Excel test routes //
+//////////////////////////////////
+
+Route::get('/exceltest', function(){
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+//set header
+$sheet->setCellValue('A1', 'IBAN');
+$sheet->setCellValue('B1', 'BIC');
+$sheet->setCellValue('C1', 'mandaatid');
+$sheet->setCellValue('D1', 'mandaatdatum');
+$sheet->setCellValue('E1', 'bedrag');
+$sheet->setCellValue('F1', 'naam');
+$sheet->setCellValue('G1', 'beschrijving');
+$sheet->setCellValue('H1', 'endtoendid');
+
+$writer = new Xlsx($spreadsheet);
+$writer->save('incassos.xlsx');
+});
