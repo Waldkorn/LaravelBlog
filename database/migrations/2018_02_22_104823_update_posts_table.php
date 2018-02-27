@@ -13,10 +13,11 @@ class UpdatePostsTable extends Migration
      */
     public function up()
     {
-        //
+
         Schema::table('posts', function($table) {
              $table->dropColumn('category_id');
         });
+        
     }
 
     /**

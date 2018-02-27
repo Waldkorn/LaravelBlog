@@ -14,6 +14,7 @@ class CreateFollowersTable extends Migration
     public function up()
     {
         Schema::create('followers', function (Blueprint $table) {
+
             $table->increments('id');
             $table->integer('follower_id')->unsigned();
             $table->integer('leader_id')->unsigned();
@@ -21,6 +22,7 @@ class CreateFollowersTable extends Migration
 
             $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leader_id')->references('id')->on('users')->onDelete('cascade');
+            
         });
     }
 

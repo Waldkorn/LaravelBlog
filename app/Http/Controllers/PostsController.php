@@ -9,6 +9,7 @@ use App\Category;
 use App\User;
 use Carbon\Carbon;
 use App\Mail\Followmail;
+use App\Role;
 
 class PostsController extends Controller
 {	
@@ -52,13 +53,13 @@ class PostsController extends Controller
 		$post->body = request('body');
 		$post->user_id = Auth()->id();
 
+		$post->save();		
+
 		$id = Auth::id();
 		$user = User::find($id);
 		$followers = $user->followers()->get();
 
-		$post->save();
-
-		//dd($post);
+		$user->increment('posts_count');
 
 		foreach ($followers as $follower) {
 

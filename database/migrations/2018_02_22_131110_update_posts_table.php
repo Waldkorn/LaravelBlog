@@ -25,6 +25,8 @@ class UpdatePostsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('posts', function($table) {
+             $table->dropColumn('comments_shown');
+        });
     }
 }

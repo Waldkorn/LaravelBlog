@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdatePostsTable extends Migration
+class UpdateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->nullable()->default(1);
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('posts_count')->after('blog_name')->default(0);
         });
     }
 
@@ -25,6 +25,8 @@ class UpdatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('followers');
+        Schema::table('posts', function($table) {
+             $table->dropColumn('posts_count');
+        });
     }
 }
