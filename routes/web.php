@@ -92,7 +92,7 @@ Route::get('/information', 'InformationController@index');
 //////////////////////////////////
 
 Route::get('/sqldump', function(){
-  
+
   $command;
   $dbConnection = env('DB_CONNECTION');
   $dbName = env('DB_DATABASE');
