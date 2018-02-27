@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdatePostsTable extends Migration
+class UpdatePostsTable2 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdatePostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->nullable()->default(1);
+            $table->boolean('comments_allowed')->default(true);
         });
     }
 
@@ -25,6 +25,6 @@ class UpdatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('followers');
+        //
     }
 }
