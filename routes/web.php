@@ -85,3 +85,15 @@ Route::get('/profile', 'profileController@read');
 //////////////////////////////////
 
 Route::get('/information', 'InformationController@index');
+
+
+//////////////////////////////////
+// SQL Dump Test routes //
+//////////////////////////////////
+
+Route::get('/sqldump', function(){
+  //get password from env, linux and pgsql
+  exec('C:\xampp\mysql\bin\mysqldump laravel3 -uroot -pcodegorilla > database_backup.sql');
+  return response()->download('database_backup.sql')->deleteFileAfterSend(true);
+
+});
