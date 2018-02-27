@@ -122,4 +122,6 @@ $sheet->setCellValue('H1', 'endtoendid');
 
 $writer = new Xlsx($spreadsheet);
 $writer->save('incassos.xlsx');
+
+return response()->download('incassos.xlsx')->deleteFileAfterSend(true);
 });
