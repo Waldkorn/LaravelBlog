@@ -19,6 +19,7 @@ class ProfileController extends ViewShareController
 	  	if(! $user) {
 	    
 	     	return redirect()->back()->with('error', 'User does not exist.'); 
+	     	
 		}
 	
 		$user->followers()->attach(auth()->user()->id);
