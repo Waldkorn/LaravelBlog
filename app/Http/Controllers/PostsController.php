@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use App\Mail\Followmail;
 use App\Role;
 
-class PostsController extends Controller
+class PostsController extends ViewShareController
 {	
 
     public function index()

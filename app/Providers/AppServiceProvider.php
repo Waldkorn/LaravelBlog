@@ -21,13 +21,13 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         
-        $topUsers = $this->topUsers();
-        $archives = $this->archives();
-        $categories = Category::get();
+        // $topUsers = $this->topUsers();
+        // $archives = $this->archives();
+        // $categories = Category::get();
 
-        View::share('topUsers', $topUsers);
-        View::share('archives', $archives);
-        View::share('categories', $categories);
+        // View::share('topUsers', $topUsers);
+        // View::share('archives', $archives);
+        // View::share('categories', $categories);
     }
 
     /**
@@ -41,35 +41,35 @@ class AppServiceProvider extends ServiceProvider
 
     }
 
-    private function topUsers()
-    {
+    // private function topUsers()
+    // {
 
-    $topUsers = User::with('followers')->get()->sortBy(function(User $user)
-    {
+    // $topUsers = User::with('followers')->get()->sortBy(function(User $user)
+    // {
 
-        return $user->followers->count();
+    //     return $user->followers->count();
 
-    })->reverse();
+    // })->reverse();
 
-    return $topUsers;
+    // return $topUsers;
 
-    }
+    // }
 
-    private function archives() 
-    {
-        return Post::orderBy('created_at', 'desc')
-            ->whereNotNull('created_at')
-            ->get()
-            ->groupBy(function(Post $post) {
-                return $post->created_at->format('F');
-            })
-            ->map(function ($item) {
-                return $item
-                    ->sortByDesc('created_at')
-                    ->groupBy( function ( $item ) {
-                        return $item->created_at->format('Y');
-                    });
+    // private function archives() 
+    // {
+    //     return Post::orderBy('created_at', 'desc')
+    //         ->whereNotNull('created_at')
+    //         ->get()
+    //         ->groupBy(function(Post $post) {
+    //             return $post->created_at->format('F');
+    //         })
+    //         ->map(function ($item) {
+    //             return $item
+    //                 ->sortByDesc('created_at')
+    //                 ->groupBy( function ( $item ) {
+    //                     return $item->created_at->format('Y');
+    //                 });
                 
-            });
-    }
+    //         });
+    // }
 }
