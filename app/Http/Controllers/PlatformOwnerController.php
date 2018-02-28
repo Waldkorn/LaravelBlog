@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class PlatformOwnerController extends ViewShareController
 {
@@ -35,4 +37,36 @@ class PlatformOwnerController extends ViewShareController
           return abort(404);
       }
     }
+
+    public function downloadInvoiceSpreadsheet(){
+
+        if (Auth::user() && Auth::user()->hasRole('platform_owner')) {
+
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+
+            //set header
+            $sheet->setCellValue('A1', 'IBAN');
+            $sheet->setCellValue('B1', 'BIC');
+            $sheet->setCellValue('C1', 'mandaatid');
+            $sheet->setCellValue('D1', 'mandaatdatum');
+            $sheet->setCellValue('E1', 'bedrag');
+            $sheet->setCellValue('F1', 'naam');
+            $sheet->setCellValue('G1', 'beschrijving');
+            //$sheet->setCellValue('H1', 'endtoendid');
+
+            $writer = new Xlsx($spreadsheet);
+            $writer->save('invoices.xlsx');
+
+            return response()->download('invoices.xlsx')->deleteFileAfterSend(true);
+          }
+          else {
+              return abort(404);
+          }
+
+    }
+
+
+
+
 }
