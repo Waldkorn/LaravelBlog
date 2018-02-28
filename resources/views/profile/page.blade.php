@@ -13,7 +13,7 @@
 					<div class="card-body">
 						<table>
 							<tr>
-								<td style="min-width: 130px;"><p class="card-text"><b>Username:</b></p></td> 
+								<td style="min-width: 130px;"><p class="card-text"><b>Username:</b></p></td>
 								<td><p class="card-text">{{ $user->name }}</p></td>
 							</tr>
 							<tr>
@@ -85,6 +85,16 @@
 						</ul>
 					</div>
 				</div>
+
+				@if (Auth::user()->hasRole('platform_owner'))
+				<div class="card b-light mb-3">
+					<div class="card-header">Database Back-Up</div>
+					<div class="card-body">
+						<a href="/dbdump" class="btn btn-success">Download</a>
+					</div>
+
+				</div>
+				@endif
 
 			</div><!-- /.blog-main -->
 		</main><!-- /.container -->
