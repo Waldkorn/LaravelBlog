@@ -12,7 +12,7 @@
 
   @if ($post->user->id == Auth::id())
 
-    <a href="/posts/{{ $post->id }}/edit" class="ml-auto"><input type="button" class="btn btn-warning" value="Edit post"></a>
+    <a href="/posts/{{ $post->id }}/edit" class="ml-auto"><input type="button" class="btn btn-warning" value="{{ __('messages.editPost') }}"></a>
 
   @endif
 
@@ -76,7 +76,7 @@
 	  </ul>
   </div>
   @else
-  no comments for this post available
+  {{ __('messages.noCommentsForThisPost') }}
   @endif
   <hr>
 

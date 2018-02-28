@@ -32,14 +32,14 @@
 
 		<div class="form-group">
 
-			<label for="title">Title:</label>
+			<label for="title">{{ __('messages.title') }}</label>
 			<input name="title" class="form-control" value="{{ $post->title }}">
 
 		</div>
 
 		<div class="form-group">
   
-		  	<label for="category">Category</label>
+		  	<label for="category">{{ __('messages.category') }}</label>
 		  	<select type="integer" class="form-control" id="category_id" name="category_id">
 		  		@foreach ($categories as $category)
 		  			<option value={{ $category->id }}>{{ $category->category_title }}</option>
@@ -54,7 +54,7 @@
 
 		</div>
 
-		<button type="submit" class="btn btn-primary">Submit changes</button>
+		<button type="submit" class="btn btn-primary">{{ __('messages.submitChanges') }}</button>
 		
 	</form>
 
