@@ -23,5 +23,10 @@ class RoleTableSeeder extends Seeder
         $role_paying_user->description = "A user who has subscribed";
         $role_paying_user->save();
 
+        $role_platform_owner = new Role();
+        $role_platform_owner->name = "platform_owner";
+        $role_platform_owner->description = "The owner of the platform";
+        $role_platform_owner->save();
+
     }
 }
