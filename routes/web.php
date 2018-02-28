@@ -1,7 +1,5 @@
 <?php
 
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 ////////////////////////////
 // Postscontroller routes //
 ////////////////////////////
@@ -104,9 +102,9 @@ Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
 Route::get('/language/toggle', 'LanguageController@toggle');
 
 
-//////////////////////////////////
+///////////////////////
 // Excel test routes //
-//////////////////////////////////
+///////////////////////
 
 Route::get('/exceltest', function(){
 $spreadsheet = new Spreadsheet();
@@ -127,4 +125,8 @@ $writer->save('incassos.xlsx');
 
 return response()->download('incassos.xlsx')->deleteFileAfterSend(true);
 });
+
+Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+
+Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
 

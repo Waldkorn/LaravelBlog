@@ -92,7 +92,13 @@
 					<div class="card-body">
 						<a href="/dbdump" class="btn btn-success">Download</a>
 					</div>
+				</div>
 
+				<div class="card b-light mb-3">
+					<div class="card-header">Invoice Spreadsheet</div>
+					<div class="card-body">
+						<a href="/invoicespreadsheet" class="btn btn-success">Download</a>
+					</div>
 				</div>
 				@endif
 
