@@ -44,6 +44,7 @@
 						</table>
 					</div>
 				</div>
+
 				<div class="card bg-light mb-3">
 					<div class="card-header">Header settings: </div>
 					<div class="card-body">
@@ -60,6 +61,28 @@
 
 						 @include('profile.headerEditForm')
 
+					</div>
+				</div>
+
+				<div class="card b-light mb-3">
+					<div class="card-header">Blog posts: </div>
+					<div class="card-body">
+						<ul class="list-group">
+							@foreach (Auth::user()->posts()->Latest()->get() as $post)
+								<li class="list-group-item"><a href="/posts/{{ $post->id }}" class="text-muted">{{ $post->title }}</a></li>
+							@endforeach
+						</ul>
+					</div>
+				</div>
+
+				<div class="card b-light mb-3">
+					<div class="card-header">Followers:</div>
+					<div class="card-body">
+						<ul class="list-group">
+							@foreach (Auth::user()->followers()->get() as $follower)
+								<li class="list-group-item"><a href="/blog/{{ $follower->id }}" class="text-muted">{{ $follower->name }}</a></li>
+							@endforeach
+						</ul>
 					</div>
 				</div>
 

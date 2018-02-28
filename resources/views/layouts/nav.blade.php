@@ -13,7 +13,12 @@
           </span>
         </div>
       @else
-        <a class="nav-item nav-link ml-auto" href="/login">Login</a>
+      <span class="ml-auto">
+        <div class="row">
+          <a class="nav-item nav-link ml-auto" href="/login">Login</a>
+          <a class="nav-item nav-link ml-auto" href="/register">Register</a>
+        </div>
+      </span>
       @endif
   </div>
 </nav>
