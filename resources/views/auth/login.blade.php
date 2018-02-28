@@ -1,7 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
+
+@include('layouts.nav')
+
+<div class="container" style="padding-top:10px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">

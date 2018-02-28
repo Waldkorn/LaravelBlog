@@ -39,15 +39,6 @@
 
 	{!! $post->body !!}
 
-	  <hr>
-
-      <div class="row">
-
-
-
-      </div>
-
-    <hr>
  @if ($post->comments_shown == 1)
   <div class="comments">
 	  <ul class="list-group">
