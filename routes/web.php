@@ -85,3 +85,10 @@ Route::get('/profile', 'profileController@read');
 //////////////////////////////////
 
 Route::get('/information', 'InformationController@index');
+
+
+///////////////////////////////
+// LanguageController routes //
+///////////////////////////////
+
+Route::get('/language/toggle', 'LanguageController@toggle');
