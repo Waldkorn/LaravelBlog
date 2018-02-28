@@ -92,3 +92,10 @@ Route::get('/information', 'InformationController@index');
 //////////////////////////////////
 
 Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+
+
+///////////////////////////////
+// LanguageController routes //
+///////////////////////////////
+
+Route::get('/language/toggle', 'LanguageController@toggle');
