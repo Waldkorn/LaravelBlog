@@ -88,7 +88,7 @@ Route::get('/information', 'InformationController@index');
 
 
 //////////////////////////////////
-// Platform Owner routes //
+// PlatformOwnerController routes //
 //////////////////////////////////
 
 Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
