@@ -26,8 +26,13 @@
 						</div>
 
 						<div class="form-group">
-							<label for="payment details">Payment details</label>
-							<input type="text" class="form-control" id="payment_details" name="payment_details">
+							<label for="payment details">IBAN</label>
+							<input type="text" class="form-control" id="iban" name="iban">
+						</div>
+
+						<div class="form-group">
+							<label for="payment details">BIC</label>
+							<input type="text" class="form-control" id="bic" name="bic">
 						</div>
 
 						<button type="submit" class="btn btn-primary">Subscribe</button>
