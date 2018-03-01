@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use App\BankDetails;
 
 class PlatformOwnerController extends ViewShareController
 {
@@ -54,6 +55,18 @@ class PlatformOwnerController extends ViewShareController
             $sheet->setCellValue('F1', 'naam');
             $sheet->setCellValue('G1', 'beschrijving');
             //$sheet->setCellValue('H1', 'endtoendid');
+            $bankdetails = BankDetails::get();
+
+            for ($i = 0; $i < count($bankdetails); $i++){
+              $excelRow = $i + 2;
+              $sheet->setCellValue('A' . $excelRow, $bankdetails[$i]->IBAN);
+              $sheet->setCellValue('B' . $excelRow, $bankdetails[$i]->BIC);
+              $sheet->setCellValue('C' . $excelRow, $bankdetails[$i]->mandaat_id);
+              $sheet->setCellValue('D' . $excelRow, $bankdetails[$i]->created_at->todatestring());
+              $sheet->setCellValue('E' . $excelRow, '10');
+              $sheet->setCellValue('F' . $excelRow, $bankdetails[$i]->name);
+              $sheet->setCellValue('G' . $excelRow, 'Maandelijkse afschrijving mijn blog');
+            }
 
             $writer = new Xlsx($spreadsheet);
             $writer->save('invoices.xlsx');
