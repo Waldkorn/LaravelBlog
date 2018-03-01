@@ -73,11 +73,11 @@ Route::get('/profile/{profileId}/follow', 'ProfileController@followUser');
 
 Route::get('/profile/{profileId}/unfollow', 'ProfileController@unFollowUser');
 
-Route::get('/profile/{profileName}/upgrade', 'profileController@upgrade');
+Route::get('/profile/{profileName}/upgrade', 'ProfileController@upgrade');
 
-Route::post('/profile/{profileName}/setUpgrade', 'profileController@setUpgrade');
+Route::post('/profile/{profileName}/setUpgrade', 'ProfileController@setUpgrade');
 
-Route::get('/profile', 'profileController@read');
+Route::get('/profile', 'ProfileController@read');
 
 
 //////////////////////////////////
@@ -85,3 +85,14 @@ Route::get('/profile', 'profileController@read');
 //////////////////////////////////
 
 Route::get('/information', 'InformationController@index');
+
+
+///////////////////////////////////
+// SubscriptionController routes //
+///////////////////////////////////
+
+Route::get('/subscription', 'SubscriptionController@index');
+
+Route::post('/charge', 'SubscriptionController@store');
+
+Route::post('/mail', 'SubscriptionController@paymentNotification');
