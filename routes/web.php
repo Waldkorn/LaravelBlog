@@ -87,6 +87,7 @@ Route::get('/profile', 'ProfileController@read');
 Route::get('/information', 'InformationController@index');
 
 
+
 ///////////////////////////////////
 // SubscriptionController routes //
 ///////////////////////////////////
@@ -96,3 +97,19 @@ Route::get('/subscription', 'SubscriptionController@index');
 Route::post('/charge', 'SubscriptionController@store');
 
 Route::post('/mail', 'SubscriptionController@paymentNotification');
+
+///////////////////////////////
+// LanguageController routes //
+///////////////////////////////
+
+Route::get('/language/toggle', 'LanguageController@toggle');
+
+
+//////////////////////////////////
+// PlatformOwnerController routes //
+//////////////////////////////////
+
+Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+
+Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
+
