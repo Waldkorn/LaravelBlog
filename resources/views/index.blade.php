@@ -63,9 +63,9 @@
 
             @else
 
-              <h1> Welcome! </h1>
+              <h1> {{ __('messages.welcome') }}! </h1>
 
-              Use the top users section to follow bloggers
+              {{ __('messages.welcomeMessage') }}
 
             @endif
 

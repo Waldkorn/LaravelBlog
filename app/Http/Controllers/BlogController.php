@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
-class BlogController extends Controller
+class BlogController extends ViewShareController
 {
 
     public function index(User $user) {

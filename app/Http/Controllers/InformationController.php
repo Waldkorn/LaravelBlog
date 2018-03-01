@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class InformationController extends Controller
+class InformationController extends ViewShareController
 {
     public function index()
     {

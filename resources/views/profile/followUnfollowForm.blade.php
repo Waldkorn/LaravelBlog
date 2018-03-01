@@ -4,6 +4,6 @@
 
 @else
 
-	<a href="/{{ $user->id }}/unfollow"><button class="btn-danger">Unfollow</button></a>
+	<a href="/profile/{{ $user->id }}/unfollow"><button class="btn-danger">Unfollow</button></a>
 
 @endif

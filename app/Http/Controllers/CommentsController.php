@@ -9,7 +9,7 @@ use App\User;
 use App\Mail\Commentreceived;
 
 
-class CommentsController extends Controller
+class CommentsController extends ViewShareController
 {
     public function __construct() 
     {

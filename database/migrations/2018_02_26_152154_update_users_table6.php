@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUsersTable extends Migration
+class UpdateUsersTable6 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('blog_header_picture')->after('blog_name')->default('http://www.themesltd.com/headers2/black_feel_good_box.png');
+            $table->integer('posts_count')->after('blog_name')->default(0);
         });
     }
 
@@ -25,6 +25,8 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('posts', function($table) {
+             $table->dropColumn('posts_count');
+        });
     }
 }

@@ -71,7 +71,13 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/profile/{profileId}/follow', 'ProfileController@followUser');
 
-Route::get('/{profileId}/unfollow', 'ProfileController@unFollowUser');
+Route::get('/profile/{profileId}/unfollow', 'ProfileController@unFollowUser');
+
+Route::get('/profile/{profileName}/upgrade', 'ProfileController@upgrade');
+
+Route::post('/profile/{profileName}/setUpgrade', 'ProfileController@setUpgrade');
+
+Route::get('/profile', 'ProfileController@read');
 
 
 //////////////////////////////////
@@ -79,3 +85,31 @@ Route::get('/{profileId}/unfollow', 'ProfileController@unFollowUser');
 //////////////////////////////////
 
 Route::get('/information', 'InformationController@index');
+
+
+
+///////////////////////////////////
+// SubscriptionController routes //
+///////////////////////////////////
+
+Route::get('/subscription', 'SubscriptionController@index');
+
+Route::post('/charge', 'SubscriptionController@store');
+
+Route::post('/mail', 'SubscriptionController@paymentNotification');
+
+///////////////////////////////
+// LanguageController routes //
+///////////////////////////////
+
+Route::get('/language/toggle', 'LanguageController@toggle');
+
+
+//////////////////////////////////
+// PlatformOwnerController routes //
+//////////////////////////////////
+
+Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+
+Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
+
