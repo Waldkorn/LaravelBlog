@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
+use Laravel\Cashier\Cashier;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
-{
+{   
     use Notifiable;
 
     /**

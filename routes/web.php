@@ -130,3 +130,14 @@ Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
 
 Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
 
+
+///////////////////////////////////
+// SubscriptionController routes //
+///////////////////////////////////
+
+Route::get('/subscription', 'SubscriptionController@index');
+
+Route::post('/charge', 'SubscriptionController@store');
+
+Route::post('/mail', 'SubscriptionController@paymentNotification');
+
