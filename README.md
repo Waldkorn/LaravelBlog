@@ -2,7 +2,7 @@
 
 Deze week is een vervolg op de vorige week, we bouwen onze blog verder uit aan de hand van de userstories die beschreven staan in trello.
 
-Een beschrijving van de opdracht en plan van aanpak staan in de "plan van aanpak laravel blog 2" file
+Een beschrijving van de opdracht en plan van aanpak staan in de "plan van aanpak laravel blog 3" file
 
 Live versie staat op: https://shrouded-fortress-34370.herokuapp.com/
 
