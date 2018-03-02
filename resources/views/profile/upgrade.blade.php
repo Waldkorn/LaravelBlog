@@ -39,6 +39,9 @@
 
 					</form>
 
+					<h5>Prefer using creditcard? use the following link:</h5>
+					<a href="http://shrouded-fortress-34370.herokuapp.com/subscription">Subscribe by creditcard.</a>
+
 					@include('layouts.errors')
 
 				@else

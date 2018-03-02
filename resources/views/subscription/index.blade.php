@@ -31,6 +31,9 @@
 </head>
 
 <body>
+
+@if (Auth::check() && Auth::user()->hasRole('non_paying_user'))
+
 <h1>Laravelblog subscription plan</h1>
 
 
@@ -52,7 +55,19 @@
   <button>Submit Payment</button>
 </form>
 
+@else
+
+	<h1>Hey! You already paid for your account.</h1>
+
+	<h3>Move along sir...</h3>
+
+@endif
+
+
+
 @endsection
+
+
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
