@@ -88,6 +88,7 @@ Route::get('/information', 'InformationController@index');
 
 
 
+
 ///////////////////////////////////
 // SubscriptionController routes //
 ///////////////////////////////////
@@ -98,6 +99,15 @@ Route::post('/charge', 'SubscriptionController@store');
 
 Route::post('/mail', 'SubscriptionController@paymentNotification');
 
+//////////////////////////////////
+// PlatformOwnerController routes //
+//////////////////////////////////
+
+Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+
+
+
+
 ///////////////////////////////
 // LanguageController routes //
 ///////////////////////////////
@@ -105,11 +115,42 @@ Route::post('/mail', 'SubscriptionController@paymentNotification');
 Route::get('/language/toggle', 'LanguageController@toggle');
 
 
-//////////////////////////////////
-// PlatformOwnerController routes //
-//////////////////////////////////
+///////////////////////
+// Excel test routes //
+///////////////////////
+
+Route::get('/exceltest', function(){
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+//set header
+$sheet->setCellValue('A1', 'IBAN');
+$sheet->setCellValue('B1', 'BIC');
+$sheet->setCellValue('C1', 'mandaatid');
+$sheet->setCellValue('D1', 'mandaatdatum');
+$sheet->setCellValue('E1', 'bedrag');
+$sheet->setCellValue('F1', 'naam');
+$sheet->setCellValue('G1', 'beschrijving');
+$sheet->setCellValue('H1', 'endtoendid');
+
+$writer = new Xlsx($spreadsheet);
+$writer->save('incassos.xlsx');
+
+return response()->download('incassos.xlsx')->deleteFileAfterSend(true);
+});
 
 Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
 
 Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
+
+
+///////////////////////////////////
+// SubscriptionController routes //
+///////////////////////////////////
+
+Route::get('/subscription', 'SubscriptionController@index');
+
+Route::post('/charge', 'SubscriptionController@store');
+
+Route::post('/mail', 'SubscriptionController@paymentNotification');
 
