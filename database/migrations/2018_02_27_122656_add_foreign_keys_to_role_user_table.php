@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdatePostsTable extends Migration
+class AddForeignKeysToRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class UpdatePostsTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('posts', function($table) {
-             $table->dropColumn('category_id');
+        Schema::table('role_user', function(Blueprint $table) {
+
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -27,8 +29,5 @@ class UpdatePostsTable extends Migration
     public function down()
     {
         //
-        Schema::table('posts', function($table) {
-             $table->integer('category_id');
-        });
     }
 }

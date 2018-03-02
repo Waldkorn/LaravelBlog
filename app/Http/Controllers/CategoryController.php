@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 
-class CategoryController extends Controller
+class CategoryController extends ViewShareController
 {
     public function index()
     {
