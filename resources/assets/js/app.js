@@ -13,19 +13,23 @@ window.Vue = require('vue');
 window.Vue.use(VueRouter);
 
 import ExampleComponent from './components/ExampleComponent.vue';
+import Categories from './components/Categories.vue'
 
-Vue.component('ExampleComponent', require('./components/ExampleComponent.vue'))
+Vue.component('ExampleComponent', require('./components/ExampleComponent.vue'));
+Vue.component('Categories',  require('./components/Categories.vue'));
 
 const routes = [
     {
-        path: '/superman',
+        path: '/',
         name: "ExampleComponent",
         components: {
-           ExampleComponent
+           ExampleComponent,
+           Categories
         },
         data: {
 
             name: "Ewout",
+            categories: ""
 
         },
         mounted () {
@@ -36,7 +40,14 @@ const routes = [
 
 const router = new VueRouter({ routes })
  
-const app = new Vue({ router }).$mount('#app')
+//const app = new Vue({ router }).$mount('#app')
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        categories: ""
+    }
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

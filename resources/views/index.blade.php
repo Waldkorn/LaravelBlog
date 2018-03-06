@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>Blog</title>
@@ -35,7 +37,9 @@
 
             <hr>
 
-            @include('categories')
+            <div id="app">
+              <Categories></Categories>
+            </div>
 
             @include('layouts.errors')
 
@@ -69,7 +73,7 @@
 
             @endif
 
-
+            <script src="{{ asset('js/app.js') }}"></script>
 
           </div><!-- /.blog-main -->
         </div><!-- /.row -->

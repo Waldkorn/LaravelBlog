@@ -146,9 +146,11 @@ JavaScript::put([
         'users' => App\User::get()
  ]);
 
-Route::get('/api', function() { 
-	echo "hallo";
-});
+//Route::get('/api/Categories', 'API/CategoryController@get');
+
+// Route::get('/api', function() { 
+// 	echo "hallo";
+// });
 
 Route::get('/{vue_capture?}', function () {
 	$users = App\User::get();

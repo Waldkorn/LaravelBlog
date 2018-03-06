@@ -24,6 +24,7 @@
 	    <router-link :to="{name: 'ExampleComponent'}">Hallo</router-link>
 	    <router-view name="ExampleComponent"></router-view>
 		<example-component :users=users></example-component>
+        <Categories></Categories>
 
 	</div>
 
