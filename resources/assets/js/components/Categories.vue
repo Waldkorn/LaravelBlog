@@ -1,28 +1,29 @@
 <template>	
 
-		<ul class="list-group">
+	<ul class="list-group">
 
-			<li  class="list-group-item" v-for="category in categories">
+		<li  class="list-group-item" v-for="category in categories">
 
-				<a v-bind:href="'/categories/' + category.id + '/posts'">{{ category.category_title }}</a>
+			<a v-bind:href="'/categories/' + category.id + '/posts'">{{ category.category_title }}</a>
 
-			</li>
+		</li>
 
-				<form method="POST" action="/categories/create">
-					<input type="hidden" name="_token" :value="csrf" />
-					<div class="form-group">
-						<input name="category_title" class="form-control" placeholder="Add category...">
-					</div>
+			<form method="POST" action="/categories/create">
+				<input type="hidden" name="_token" :value="csrf" />
+				<div class="form-group">
+					<input name="category_title" class="form-control" placeholder="Add category...">
+				</div>
 
-				</form>
+			</form>
 
-		</ul>
+	</ul>
 
 </ul>
 
 </template>
 
 <script>
+	
 	export default {
 		name: 'Categories',
 		data: function() {

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>Blog</title>
@@ -16,7 +16,6 @@
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link href="blog.css" rel="stylesheet">
   </head>
 
   <body>
@@ -24,6 +23,7 @@
     
     <div class="container">
       <main role="main" class="container">
+       
         <div class="row">
           <div class="col-md-3 category-main">
 
@@ -33,50 +33,48 @@
 
             <hr>
 
-            @include( 'layouts.topUsers' )
+             <div id="app">
 
-            <hr>
+              <top-users></top-users>
 
-            <div id="app">
+              <hr>
+
               <Categories></Categories>
+
+              <hr>
+
+              <archives></archives>
+
+              <hr>
+
             </div>
 
-            @include('layouts.errors')
+          </div>
 
-            <hr>
-            
-            @include('layouts.archives')
+            <div class="col-md-8 blog-main">
 
-            <hr>
+              <div id="posts">
 
-        </div>
+                <Posts></Posts>
 
-          <div class="col-md-8 blog-main">
+              </div>
 
-            @include('profile.header')
+              @include('profile.header')
 
-            <hr>
+              <hr>
 
-            @if (!empty($posts)) 
+              @if (empty($posts)) 
 
-              @foreach ($posts as $post)
+                <h1> {{ __('messages.welcome') }}! </h1>
 
-               @include('layouts.posts')
+                {{ __('messages.welcomeMessage') }}
 
-              @endforeach
+              @endif
 
-            @else
+              <script src="{{ asset('js/app.js') }}"></script>
 
-              <h1> {{ __('messages.welcome') }}! </h1>
-
-              {{ __('messages.welcomeMessage') }}
-
-            @endif
-
-            <script src="{{ asset('js/app.js') }}"></script>
-
-          </div><!-- /.blog-main -->
-        </div><!-- /.row -->
+            </div><!-- /.blog-main -->
+          </div><!-- /.row -->
       </main><!-- /.container -->
     </div>
   </body>

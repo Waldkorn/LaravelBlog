@@ -142,18 +142,8 @@ Route::post('/charge', 'SubscriptionController@store');
 Route::post('/mail', 'SubscriptionController@paymentNotification');
 
 
-JavaScript::put([
-        'users' => App\User::get()
- ]);
-
-//Route::get('/api/Categories', 'API/CategoryController@get');
-
-// Route::get('/api', function() { 
-// 	echo "hallo";
-// });
-
-Route::get('/{vue_capture?}', function () {
-	$users = App\User::get();
-    return view('test', ['users' => $users]);
-})->where('vue_capture', '[\/\w\.-]*');
+// Route::get('/{vue_capture?}', function () {
+// 	$users = App\User::get();
+//     return view('test', ['users' => $users]);
+// })->where('vue_capture', '[\/\w\.-]*');
 
