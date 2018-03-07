@@ -55,7 +55,7 @@
 
               <div id="posts">
 
-                <Posts></Posts>
+                <Posts :posts="{{ json_encode($posts) }}"></Posts>
 
               </div>
 

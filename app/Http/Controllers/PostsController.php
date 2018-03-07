@@ -122,7 +122,7 @@ class PostsController extends ViewShareController
 
     	}
 
-    	$posts = $posts->get();
+    	$posts = $posts->with('category.post', 'user.posts')->get();
 
     	return view('index', compact('posts'));
 	}
@@ -154,7 +154,7 @@ class PostsController extends ViewShareController
 	    	$followings = $user->followings()->get();
 	    	$posts = array();
 		  	foreach ($followings as $following) {
-				$helperPosts = $following->posts()->Latest()->get();
+				$helperPosts = $following->posts()->Latest()->with('category.post', 'user.posts')->get();
 				foreach($helperPosts as $helperPost) {
 					$posts[] = $helperPost;
 				}
@@ -164,7 +164,7 @@ class PostsController extends ViewShareController
 
 		} else {
 
-	    	$posts = Post::Latest()->get();
+	    	$posts = Post::Latest()->with('category.post', 'user.posts')->get();
 	    	
 	    }
 

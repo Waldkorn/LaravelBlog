@@ -2,6 +2,21 @@
 
 	<div>
 
+		<hr>
+
+		<div class="card bg-secondary">
+			<div class="card-body">
+
+				<div class="ml-auto">
+
+					<button class="btn btn-primary">Increase fontsize</button>
+					<button class="btn btn-primary">Decrease fontsize</button>
+
+				</div>
+
+			</div>
+		</div>
+
 		<div class="blog-post" v-for="post in posts">
 			<h2 class="blog-post-title">
 				<a v-bind:href="'/posts/' + post.id">
@@ -38,17 +53,7 @@
 
 	export default {
 		name: "Posts",
-		data: function() {
-			return {
-				posts: []
-			}
-		},
-		mounted() {
-			axios.get('/api/posts').then(response => {
-				console.log(response.data);
-                this.posts = response.data.reverse();
-            });
-		}
+		props: [ 'posts' ],
 	}
 
 </script>
@@ -56,7 +61,7 @@
 <style>
 
 .post-body {
-	font-size: 8px;
+	font-size: 16px;
 }
 
 </style>

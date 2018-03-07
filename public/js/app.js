@@ -50149,23 +50149,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "Posts",
-	data: function data() {
-		return {
-			posts: []
-		};
-	},
-	mounted: function mounted() {
-		var _this = this;
-
-		axios.get('/api/posts').then(function (response) {
-			console.log(response.data);
-			_this.posts = response.data.reverse();
-		});
-	}
+	props: ['posts']
 });
 
 /***/ }),
@@ -50178,51 +50181,79 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.posts, function(post) {
-      return _c("div", { staticClass: "blog-post" }, [
-        _c("h2", { staticClass: "blog-post-title" }, [
-          _c("a", { attrs: { href: "/posts/" + post.id } }, [
-            _vm._v("\n\n\t\t\t\t\t" + _vm._s(post.title) + "\n\n\t\t\t\t")
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          _vm._l(post.category, function(category) {
-            return _c("h6", { staticClass: "d-inline" }, [
-              _c(
-                "a",
-                { attrs: { href: "'/categories/' + category.id + '/posts'" } },
-                [
-                  _vm._v(
-                    "\n\n            \t\t\t" +
-                      _vm._s(category.category_title) +
-                      "\n\n            \t\t"
-                  )
-                ]
-              )
+    [
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.posts, function(post) {
+        return _c("div", { staticClass: "blog-post" }, [
+          _c("h2", { staticClass: "blog-post-title" }, [
+            _c("a", { attrs: { href: "/posts/" + post.id } }, [
+              _vm._v("\n\n\t\t\t\t\t" + _vm._s(post.title) + "\n\n\t\t\t\t")
             ])
-          })
-        ),
-        _vm._v(" "),
-        _c("p", { staticClass: "blog-post-meta" }, [
-          _c("a", { attrs: { href: "'/blog/' + post.user.id" } }, [
-            _vm._v(_vm._s(post.user.name))
           ]),
-          _vm._v(" on\n\t\t\t    " + _vm._s(post.created_at) + "\n\t\t\t")
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "post-body",
-          domProps: { innerHTML: _vm._s(post.body) }
-        }),
-        _vm._v(" "),
-        _c("hr")
-      ])
-    })
+          _vm._v(" "),
+          _c(
+            "div",
+            _vm._l(post.category, function(category) {
+              return _c("h6", { staticClass: "d-inline" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "'/categories/' + category.id + '/posts'" }
+                  },
+                  [
+                    _vm._v(
+                      "\n\n            \t\t\t" +
+                        _vm._s(category.category_title) +
+                        "\n\n            \t\t"
+                    )
+                  ]
+                )
+              ])
+            })
+          ),
+          _vm._v(" "),
+          _c("p", { staticClass: "blog-post-meta" }, [
+            _c("a", { attrs: { href: "'/blog/' + post.user.id" } }, [
+              _vm._v(_vm._s(post.user.name))
+            ]),
+            _vm._v(" on\n\t\t\t    " + _vm._s(post.created_at) + "\n\t\t\t")
+          ]),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "post-body",
+            domProps: { innerHTML: _vm._s(post.body) }
+          }),
+          _vm._v(" "),
+          _c("hr")
+        ])
+      })
+    ],
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card bg-secondary" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "ml-auto" }, [
+          _c("button", { staticClass: "btn btn-primary" }, [
+            _vm._v("Increase fontsize")
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn btn-primary" }, [
+            _vm._v("Decrease fontsize")
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50358,7 +50389,7 @@ exports = module.exports = __webpack_require__(55)(false);
 
 
 // module
-exports.push([module.i, "\n.post-body {\r\n\tfont-size: 8px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.post-body {\r\n\tfont-size: 16px;\n}\r\n\r\n", ""]);
 
 // exports
 
