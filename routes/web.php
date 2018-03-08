@@ -113,3 +113,9 @@ Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
 
 Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
 
+///////////////////////////////////
+// Chat routes //
+///////////////////////////////////
+Route::get('/chat', function(){
+  return view('chat.index');
+});

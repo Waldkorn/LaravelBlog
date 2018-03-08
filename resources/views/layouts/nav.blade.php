@@ -11,21 +11,24 @@
         <a class="nav-link"  style="padding-left:20px;" href="/information">{{ __('messages.information') }}</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link"  style="padding-left:20px;" href="/chat">Chat</a>
+      </li>
+      <li class="nav-item">
         @include('layouts.language')
       </li>
       @if (Auth::check())
-   
+
       <li class="nav-item">
         <a class="nav-link" href="/posts/create">{{ __('messages.createPost') }}</a>
       </li>
-   
+
     @endif
   </ul>
     @if (Auth::check())
     <ul class="nav navbar-nav flex-grow justify-content-end" style="padding-left:100px;">
-      
+
         <div class="row">
-        
+
         <li class="nav-item active" >
           {{ __('messages.welcome') }} <a href="/profile">{{ Auth::user()->name }}</a>
         </li>
@@ -44,6 +47,6 @@
       </li>
     </ul>
     @endif
-    
+
    </div>
 </nav>
