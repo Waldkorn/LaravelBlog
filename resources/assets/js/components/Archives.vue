@@ -3,7 +3,7 @@
 <div>
   <h4 class="font-italic">Archives</h4>   
     <h6 class="mb-0" v-for="(year, index) in archives" :key='index'>
-      <a v-on:click="getMessages(archives[index])">{{index}}</a><br>
+      <p v-on:click="getMessages(archives[index])" class="text">{{index}}</p>
     </h6>
 </div>
 

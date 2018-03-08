@@ -4,7 +4,7 @@
 		<h4 class="font-italic">Top Users</h4>
 
 		<h6 class="mb-0" v-for="topUser in topUsers">
-	    	<p v-on:click="getMessages(topUser.id)">
+	    	<p class="text" v-on:click="getMessages(topUser.id)">
 	      		{{ topUser.name }}
 	    	</p>
 	  	</h6>
@@ -40,7 +40,7 @@
 
 <style>
 
-p:hover {
+.text:hover {
 	color: #007bff;
 	cursor: pointer;
 }

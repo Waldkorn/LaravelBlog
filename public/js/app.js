@@ -47404,6 +47404,7 @@ var render = function() {
           _c(
             "p",
             {
+              staticClass: "text",
               on: {
                 click: function($event) {
                   _vm.getMessages(topUser.id)
@@ -47489,8 +47490,9 @@ var render = function() {
       _vm._l(_vm.archives, function(year, index) {
         return _c("h6", { key: index, staticClass: "mb-0" }, [
           _c(
-            "a",
+            "p",
             {
+              staticClass: "text",
               on: {
                 click: function($event) {
                   _vm.getMessages(_vm.archives[index])
@@ -47498,8 +47500,7 @@ var render = function() {
               }
             },
             [_vm._v(_vm._s(index))]
-          ),
-          _c("br")
+          )
         ])
       })
     ],
@@ -48169,7 +48170,7 @@ exports = module.exports = __webpack_require__(53)(false);
 
 
 // module
-exports.push([module.i, "\np:hover {\r\n\tcolor: #007bff;\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.text:hover {\r\n\tcolor: #007bff;\r\n\tcursor: pointer;\n}\r\n\r\n", ""]);
 
 // exports
 
