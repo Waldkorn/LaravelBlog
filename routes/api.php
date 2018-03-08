@@ -27,6 +27,8 @@ Route::get('/posts', 'API\PostController@get');
 
 Route::get('/posts/{user}', 'API\PostController@getMessagesFromUser');
 
+Route::get('/archives/{index}');
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -107,7 +107,7 @@ class PostsController extends ViewShareController
 
 	}
 
-	public function month( $year)
+	public function month($year)
 	{
 		$posts = Post::Latest();
 

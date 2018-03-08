@@ -14135,7 +14135,6 @@ var app = new Vue({
   },
   methods: {
     updatePosts: function updatePosts(data) {
-      console.log("it works");
       this.posts = data;
       this.$emit('update', data);
     }
@@ -47453,7 +47452,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			archives: [],
-			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+			posts: null
 		};
 	},
 	mounted: function mounted() {
@@ -47462,6 +47462,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		axios.get('/api/archives').then(function (response) {
 			_this.archives = response.data;
 		});
+	},
+
+	methods: {
+		getMessages: function getMessages(archives) {
+			archives = JSON.parse(JSON.stringify(archives));
+			var posts = archives[Object.keys(archives)[0]];
+			this.$emit('update', posts);
+		}
 	}
 });
 
@@ -47480,9 +47488,17 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.archives, function(year, index) {
         return _c("h6", { key: index, staticClass: "mb-0" }, [
-          _c("a", { attrs: { href: "/" + index + "/posts" } }, [
-            _vm._v(_vm._s(index))
-          ]),
+          _c(
+            "a",
+            {
+              on: {
+                click: function($event) {
+                  _vm.getMessages(_vm.archives[index])
+                }
+              }
+            },
+            [_vm._v(_vm._s(index))]
+          ),
           _c("br")
         ])
       })

@@ -3,7 +3,7 @@
 <div>
   <h4 class="font-italic">Archives</h4>   
     <h6 class="mb-0" v-for="(year, index) in archives" :key='index'>
-      <a v-bind:href="'/' + index + '/posts'">{{index}}</a><br>
+      <a v-on:click="getMessages(archives[index])">{{index}}</a><br>
     </h6>
 </div>
 
@@ -16,13 +16,21 @@
 		data: function() {
 			return {
 				archives: [],
-            	csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            	csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            	posts: null
 			}
 		},
 		mounted() {
 			axios.get('/api/archives').then(response => {
                 this.archives = response.data;
             });
+		},
+		methods: {
+			getMessages : function(archives) {
+				archives = JSON.parse(JSON.stringify(archives));
+				var posts = archives[Object.keys(archives)[0]];
+				this.$emit('update', posts);
+			}
 		}
 	}
 

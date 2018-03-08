@@ -34,6 +34,7 @@ class PostController extends Controller
 	{
 	    return Post::orderBy('created_at', 'desc')
 	        ->whereNotNull('created_at')
+	        ->with('category.post', 'user.posts')
 	        ->get()
 	        ->groupBy(function(Post $post) {
 	            return $post->created_at->format('F');

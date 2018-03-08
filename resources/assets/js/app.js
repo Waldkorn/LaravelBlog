@@ -27,7 +27,6 @@ var app = new Vue({
     },
     methods: {
 		updatePosts : function(data) {
-			console.log("it works");
 			this.posts = data;
 			this.$emit('update', data);
 		}
