@@ -35,7 +35,7 @@
 	  	
 	  <div class="form-group">
 	    <label for="Body">{{ __('messages.body') }}</label>
-	   <textarea id="body" name="body" class="form-control" ></textarea>
+	   <textarea id="body" name="body" class="form-control" readonly></textarea>
 	  </div>
 
 	  	@if (Auth::user()->hasRole('paying_user') || Auth::user()->posts_count < 5)

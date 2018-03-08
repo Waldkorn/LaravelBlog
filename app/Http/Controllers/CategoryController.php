@@ -21,7 +21,7 @@ class CategoryController extends ViewShareController
     {
 
     	$categories = category::get();
-        $posts = $category->post()->Latest()->get();
+        $posts = $category->post()->Latest()->with('category.post', 'user.posts')->get();
      
     	return view('index', compact('posts', 'categories', 'archives'));
     	

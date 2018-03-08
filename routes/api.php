@@ -13,6 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/categories', 'API\CategoryController@get');
+
+Route::get('/categories/{category}', 'API\CategoryController@getPostsFromCategory');
+
+
+Route::get('/topUsers', 'API\UserController@getTopUsers');
+
+Route::get('/archives', 'API\PostController@getArchives');
+
+
+Route::get('/posts', 'API\PostController@get');
+
+Route::get('/posts/{user}', 'API\PostController@getMessagesFromUser');
+
+Route::get('/archives/{index}');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

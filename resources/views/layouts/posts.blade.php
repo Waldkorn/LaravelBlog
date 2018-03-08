@@ -1,14 +1,11 @@
 <div class="blog-post">
-    <row>
   <h2 class="blog-post-title">
-
   	<a href='/posts/{{ $post->id }}'>
 
 	  	{{ $post->title }}
 
-  </a>
+    </a>
   </h2>
-</row>
   <h3>
 
       @if ($post->category != null)

@@ -154,6 +154,8 @@ Route::post('/mail', 'SubscriptionController@paymentNotification');
 /////////////////
 // Chat routes //
 /////////////////
+
 Route::get('/chat', function(){
   return view('chat.index');
 });
+

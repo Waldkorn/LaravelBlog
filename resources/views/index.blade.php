@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>Blog</title>
@@ -21,8 +23,9 @@
     
     <div class="container">
       <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-3 category-main">
+        <div id="app">
+          <div class="row">
+            <div class="col-md-3 category-main">
 
             <hr>
 
@@ -30,49 +33,41 @@
 
             <hr>
 
-            @include( 'layouts.topUsers' )
+              <top-users v-on:update="updatePosts"></top-users>
 
-            <hr>
+              <hr>
 
-            @include('categories')
+              <Categories v-on:update="updatePosts"></Categories>
 
-            @include('layouts.errors')
+              <hr>
 
-            <hr>
-            
-            @include('layouts.archives')
+              <archives v-on:update="updatePosts"></archives>
 
-            <hr>
+              <hr>
 
-        </div>
+          </div>
 
-          <div class="col-md-8 blog-main">
+            <div class="col-md-9 blog-main">
 
-            @include('profile.header')
+              <Posts :posts="posts" ></Posts>
 
-            <hr>
+              @include('profile.header')
 
-            @if (!empty($posts)) 
+              @if (empty($posts)) 
 
-              @foreach ($posts as $post)
+                <h1> {{ __('messages.welcome') }}! </h1>
 
-               @include('layouts.posts')
+                {{ __('messages.welcomeMessage') }}
 
-              @endforeach
+              @endif
 
-            @else
-
-              <h1> {{ __('messages.welcome') }}! </h1>
-
-              {{ __('messages.welcomeMessage') }}
-
-            @endif
-
-
-
-          </div><!-- /.blog-main -->
-        </div><!-- /.row -->
+            </div><!-- /.row -->
+          </div>
+        </div><!-- /.blog-main -->
       </main><!-- /.container -->
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
   </body>
 </html>
