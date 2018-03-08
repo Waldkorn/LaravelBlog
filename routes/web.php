@@ -87,12 +87,16 @@ Route::get('/profile', 'ProfileController@read');
 Route::get('/information', 'InformationController@index');
 
 
-//////////////////////////////////
-// PlatformOwnerController routes //
-//////////////////////////////////
 
-Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
+///////////////////////////////////
+// SubscriptionController routes //
+///////////////////////////////////
 
+Route::get('/subscription', 'SubscriptionController@index');
+
+Route::post('/charge', 'SubscriptionController@store');
+
+Route::post('/mail', 'SubscriptionController@paymentNotification');
 
 
 ///////////////////////////////
@@ -126,6 +130,11 @@ $writer->save('incassos.xlsx');
 return response()->download('incassos.xlsx')->deleteFileAfterSend(true);
 });
 
+
+////////////////////////////////////
+// PlatformOwnerController routes //
+////////////////////////////////////
+
 Route::get('/dbdump', 'PlatformOwnerController@downloadDBDump');
 
 Route::get('/invoicespreadsheet', 'PlatformOwnerController@downloadInvoiceSpreadsheet');
@@ -141,3 +150,10 @@ Route::post('/charge', 'SubscriptionController@store');
 
 Route::post('/mail', 'SubscriptionController@paymentNotification');
 
+
+/////////////////
+// Chat routes //
+/////////////////
+Route::get('/chat', function(){
+  return view('chat.index');
+});
