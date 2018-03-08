@@ -47,7 +47,7 @@
 
           </div>
 
-            <div class="col-md-8 blog-main">
+            <div class="col-md-9 blog-main">
 
               <Posts :posts="posts" ></Posts>
 
