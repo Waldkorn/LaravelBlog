@@ -7,10 +7,7 @@
 
 require('./bootstrap');
 
-import VueRouter from 'vue-router';
-
 window.Vue = require('vue');
-window.Vue.use(VueRouter);
 
 import Categories from './components/Categories.vue';
 import TopUsers from './components/TopUsers.vue';
@@ -22,42 +19,25 @@ Vue.component('TopUsers', require('./components/TopUsers.vue'));
 Vue.component('Archives', require('./components/Archives.vue'));
 Vue.component('Posts', require('./components/Posts.vue'));
 
-
-// const routes = [
-//     {
-//         path: '/',
-//         name: "ExampleComponent",
-//         components: {
-//            Categories
-//         },
-//         data: {
-
-//             name: "Ewout",
-//             categories: ""
-
-//         },
-//         mounted () {
-//             console.dir(this.users);
-//         }
-//     }
-// ]
-
-// const router = new VueRouter({ routes })
- 
-//const app = new Vue({ router }).$mount('#app')
-
 var app = new Vue({
     el: '#app',
     data: {
-        categories: ""
-    }
-})
+        categories: "",
+        posts: ""
+    },
+    methods: {
+		updatePosts : function(data) {
+			console.log("it works");
+			this.posts = data;
+			this.$emit('update', data);
+		}
+	},
+	created: function() {
+		axios.get('/api/posts').then( response =>
+			this.posts = response.data
+		)
+	}
 
-var posts = new Vue({
-    el: '#posts',
-    data: {
-        name: "Ewout"
-    }
 })
 
 /**

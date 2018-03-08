@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\User;
+use App\Post;
 
 class BlogController extends ViewShareController
 {
 
     public function index(User $user) {
 
-		$posts = $user->posts->sortByDesc('created_at');
+		$posts = Post::with('category.post', 'user.posts')->where('user_id', $user->id)->get();
 
 		$followers = $user->followers()->get();
 

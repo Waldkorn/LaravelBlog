@@ -14,4 +14,12 @@ class CategoryController extends Controller
     	echo Category::get();
 
     }
+
+    public function getPostsFromCategory(Category $category) {
+
+    	$posts = $category->post()->Latest()->with('category.post', 'user.posts')->get();
+    	echo $posts;
+
+    }
+
 }

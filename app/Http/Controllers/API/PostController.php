@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -12,7 +13,14 @@ class PostController extends Controller
     public function get() 
     {
 
-    	return Post::with('category.post', 'user.posts')->get();
+    	return Post::with('category.post', 'user.posts')->Latest()->get();
+
+    }
+
+    public function getMessagesFromUser(User $user) {
+
+    	$posts = $user->posts()->Latest()->with('category.post', 'user.posts')->get();
+    	return $posts;
 
     }
 

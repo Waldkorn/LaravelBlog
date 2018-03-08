@@ -9,13 +9,15 @@
 
 				<div class="ml-auto">
 
-					<button class="btn btn-primary">Increase fontsize</button>
-					<button class="btn btn-primary">Decrease fontsize</button>
+					<button class="btn btn-primary" v-on:click="increaseFontSize">Increase fontsize</button>
+					<button class="btn btn-primary" v-on:click="decreaseFontSize">Decrease fontsize</button>
 
 				</div>
 
 			</div>
 		</div>
+
+		<hr>
 
 		<div class="blog-post" v-for="post in posts">
 			<h2 class="blog-post-title">
@@ -54,6 +56,29 @@
 	export default {
 		name: "Posts",
 		props: [ 'posts' ],
+		data: function() {
+			return {
+				fontSize : 18,
+				elements : null,
+				i : 0
+			}
+		},
+		methods: {
+			increaseFontSize : function() {
+				this.fontSize++;
+				this.elements = document.getElementsByClassName('post-body');
+				for (this.i = 0 ; this.i < this.elements.length ; this.i++) {
+					this.elements[this.i].style.fontSize = this.fontSize + "px";
+				}
+			},
+			decreaseFontSize : function() {
+				this.fontSize--;
+				this.elements = document.getElementsByClassName('post-body');
+				for (this.i = 0 ; this.i < this.elements.length ; this.i++) {
+					this.elements[this.i].style.fontSize = this.fontSize + "px";
+				}
+			}
+		}
 	}
 
 </script>
@@ -61,7 +86,7 @@
 <style>
 
 .post-body {
-	font-size: 16px;
+	font-size: 18px;
 }
 
 </style>

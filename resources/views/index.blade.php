@@ -23,9 +23,9 @@
     
     <div class="container">
       <main role="main" class="container">
-       
-        <div class="row">
-          <div class="col-md-3 category-main">
+        <div id="app">
+          <div class="row">
+            <div class="col-md-3 category-main">
 
             <hr>
 
@@ -33,35 +33,25 @@
 
             <hr>
 
-             <div id="app">
-
-              <top-users></top-users>
+              <top-users v-on:update="updatePosts"></top-users>
 
               <hr>
 
-              <Categories></Categories>
+              <Categories v-on:update="updatePosts"></Categories>
 
               <hr>
 
-              <archives></archives>
+              <archives v-on:update="updatePosts"></archives>
 
               <hr>
-
-            </div>
 
           </div>
 
             <div class="col-md-8 blog-main">
 
-              <div id="posts">
-
-                <Posts :posts="{{ json_encode($posts) }}"></Posts>
-
-              </div>
+              <Posts :posts="posts" ></Posts>
 
               @include('profile.header')
-
-              <hr>
 
               @if (empty($posts)) 
 
@@ -71,11 +61,13 @@
 
               @endif
 
-              <script src="{{ asset('js/app.js') }}"></script>
-
-            </div><!-- /.blog-main -->
-          </div><!-- /.row -->
+            </div><!-- /.row -->
+          </div>
+        </div><!-- /.blog-main -->
       </main><!-- /.container -->
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
   </body>
 </html>

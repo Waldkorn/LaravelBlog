@@ -140,10 +140,3 @@ Route::get('/subscription', 'SubscriptionController@index');
 Route::post('/charge', 'SubscriptionController@store');
 
 Route::post('/mail', 'SubscriptionController@paymentNotification');
-
-
-// Route::get('/{vue_capture?}', function () {
-// 	$users = App\User::get();
-//     return view('test', ['users' => $users]);
-// })->where('vue_capture', '[\/\w\.-]*');
-
