@@ -8,11 +8,13 @@
         <a class="nav-link" href='/'>Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  style="padding-left:20px;" href="/information">{{ __('messages.information') }}</a>
+        <a class="nav-link" href="/information">{{ __('messages.information') }}</a>
       </li>
+      @if (Auth::check())
       <li class="nav-item">
-        <a class="nav-link"  style="padding-left:20px;" href="/chat">Chat</a>
+        <a class="nav-link" href="/chat">Chat</a>
       </li>
+      @endif
       <li class="nav-item">
         @include('layouts.language')
       </li>

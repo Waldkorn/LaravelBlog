@@ -37,6 +37,8 @@ return [
 	"toPost" => "[nl]to post.",
 	"submitChanges" => "[nl]Submit changes",
 	"editPost" => "[nl]Edit post",
-	"noCommentsForThisPost" => "[nl]no comments for this post available"
-
+	"noCommentsForThisPost" => "[nl]no comments for this post available",
+	"embed" => "[nl]There are options to embed external media, add pictures and style the format of your posts.",
+	"subscriptionbenefit" => "[nl]If you decide to subscribe you can even post as many posts as you want!",
+	"chat" => "[nl]Chat with other people about your favorite blog posts."
 ];
