@@ -4,7 +4,7 @@ Deze week is een vervolg op de vorige week, we bouwen onze blog verder uit aan d
 
 Een beschrijving van de opdracht en plan van aanpak staan in de "plan van aanpak laravel blog 2" file
 
-Live versie staat op: https://shrouded-fortress-34370.herokuapp.com/
+Live versie staat op: http://pacific-depths-34986.herokuapp.com/
 
 shortcuts voor de text expander: CG: CodeGorilla, gn: Groningen.
 
