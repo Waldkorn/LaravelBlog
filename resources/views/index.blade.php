@@ -19,15 +19,14 @@
   </head>
 
   <body>
-    @include ('layouts.nav')
     
-    <div class="container">
-      <main role="main" class="container">
-        <div id="app">
-          <div class="row">
-            <div class="col-md-3 category-main">
-
-            <hr>
+  @include ('layouts.nav')
+  
+  <div class="container pl-0" style="float:left;">
+    <main role="main" class="container">
+      <div id="app">
+        <div class="row">
+          <div class="col-md-3 category-main pt-2" style="background-color:#f8f9fa;">
 
             @include( 'layouts.search' )
 
@@ -47,27 +46,27 @@
 
           </div>
 
-            <div class="col-md-9 blog-main">
+          <div class="col-md-9 blog-main pt-2">
 
-              <Posts :posts="posts" ></Posts>
+            <Posts :posts="posts" ></Posts>
 
-              @include('profile.header')
+            @include('profile.header')
 
-              @if (empty($posts)) 
+            @if (empty($posts)) 
 
-                <h1> {{ __('messages.welcome') }}! </h1>
+              <h1> {{ __('messages.welcome') }}! </h1>
 
-                {{ __('messages.welcomeMessage') }}
+              {{ __('messages.welcomeMessage') }}
 
-              @endif
+            @endif
 
-            </div><!-- /.row -->
-          </div>
-        </div><!-- /.blog-main -->
-      </main><!-- /.container -->
-    </div>
+          </div><!-- /.row -->
+        </div>
+      </div><!-- /.blog-main -->
+    </main><!-- /.container -->
+  </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 
   </body>
 </html>

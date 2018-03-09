@@ -2,8 +2,6 @@
 
 	<div>
 
-		<hr>
-
 		<div class="card bg-secondary">
 			<div class="card-body">
 

@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container pl-0 pr-0 ml-0 mr-0">
+    <button class="navbar-toggler pr-0 mr-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="collapse navbar-collapse navbar-nav" id="navbarNavAltMarkup">
+    <ul class="collapse navbar-collapse navbar-nav " id="navbarNavAltMarkup">
       <li class="nav-item active">
         <a class="nav-link" href='/'>Home <span class="sr-only">(current)</span></a>
       </li>
@@ -25,7 +25,7 @@
     @endif
   </ul>
     @if (Auth::check())
-    <ul class="nav navbar-nav flex-grow justify-content-end" style="padding-left:100px;">
+    <ul class="nav navbar-nav flex-grow justify-content-end" >
 
         <div class="row">
 
@@ -38,8 +38,8 @@
         </div>
     </ul>
     @else
-    <ul class="nav navbar-nav flex-grow justify-content-end" style="padding-left:150px;">
-     <li class="nav-item active">
+    <ul class="nav navbar-nav flex-grow justify-content-end">
+      <li class="nav-item active">
         <a class="nav-item nav-link" href="/login">Log in</a>
       </li>
       <li class="nav-item">
