@@ -48121,9 +48121,7 @@ var render = function() {
               return _c("h6", { staticClass: "d-inline" }, [
                 _c(
                   "a",
-                  {
-                    attrs: { href: "'/categories/' + category.id + '/posts'" }
-                  },
+                  { attrs: { href: "/categories/" + category.id + "/posts" } },
                   [
                     _vm._v(
                       "\n\n            \t\t\t" +
@@ -48137,7 +48135,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("p", { staticClass: "blog-post-meta" }, [
-            _c("a", { attrs: { href: "'/blog/' + post.user.id" } }, [
+            _c("a", { attrs: { href: "/blog/" + post.user.id } }, [
               _vm._v(_vm._s(post.user.name))
             ]),
             _vm._v(" on\n\t\t\t    " + _vm._s(post.created_at) + "\n\t\t\t")

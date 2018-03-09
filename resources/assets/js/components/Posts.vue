@@ -27,7 +27,7 @@
 			</h2>
 			<div>        	
             	<h6 class="d-inline" v-for="category in post.category">
-            		<a href="'/categories/' + category.id + '/posts'">
+            		<a v-bind:href="'/categories/' + category.id + '/posts'">
 
             			{{ category.category_title }}
 
@@ -36,7 +36,7 @@
 	        </div>
 
 	        <p class="blog-post-meta">
-			    <a href="'/blog/' + post.user.id">{{ post.user.name }}</a> on
+			    <a v-bind:href="'/blog/' +  post.user.id">{{ post.user.name }}</a> on
 			    {{ post.created_at }}
 			</p>
 
