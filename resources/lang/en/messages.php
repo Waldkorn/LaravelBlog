@@ -37,5 +37,8 @@ return [
 	"toPost" => "to post.",
 	"submitChanges" => "Submit changes",
 	"editPost" => "Edit post",
-	"noCommentsForThisPost" => "no comments for this post available"
+	"noCommentsForThisPost" => "no comments for this post available",
+	"embed" => "There are options to embed external media, add pictures and style the format of your posts.",
+	"subscriptionbenefit" => "If you decide to subscribe you can even post as many posts as you want!",
+	"chat" => "Chat with other people about your favorite blog posts."
 ];
